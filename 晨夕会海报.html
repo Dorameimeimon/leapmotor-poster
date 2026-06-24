@@ -85,6 +85,15 @@ td {
   border-left: 2px solid #e8ecf0;
 }
 .store-section { margin-top: 30px; }
+.store-filter {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 15px;
+}
+.store-filter label { font-size: 14px; color: #555; font-weight: 500; }
+.store-filter select {
+  padding: 6px 12px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
+  background: #fff; color: #333; cursor: pointer; min-width: 160px;
+}
+.store-filter select:focus { outline: none; border-color: #2d5fa0; box-shadow: 0 0 0 2px rgba(45,95,160,.15); }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
 .check-no { color: #bdbdbd; }
@@ -117,7 +126,8 @@ td {
 <table id="managerTable"></table>
 
 <!-- 门店明细 -->
-<div class="section-label store-section">
+<div class="store-section">
+<div class="section-label">
   <div class="section-title-wrapper">
     <div class="section-title-morning">
       <div class="bar morning"></div><span>晨会</span>
@@ -127,7 +137,14 @@ td {
     </div>
   </div>
 </div>
+<div class="store-filter">
+  <label>筛选零售高级经理：</label>
+  <select id="managerFilter" onchange="filterStores()">
+    <option value="all">全部</option>
+  </select>
+</div>
 <div class="table-wrap"><table id="storeTable"></table></div>
+</div>
 
 </div>
 </div>
@@ -182,7 +199,7 @@ function renderManagerTable() {
   table.innerHTML = html;
 }
 
-function renderStoreTable() {
+function renderStoreTable(filterManager) {
   const table = document.getElementById('storeTable');
   let html = '<thead><tr>';
   html += '<th>门店名称</th><th>零售高级经理</th>';
@@ -192,6 +209,7 @@ function renderStoreTable() {
   html += '</tr></thead><tbody>';
 
   for (let m of MANAGERS_DATA) {
+    if (filterManager && filterManager !== 'all' && m.name !== filterManager) continue;
     for (let s of m.store_details) {
       html += '<tr>';
       html += '<td>' + s.name + '</td><td>' + m.name + '</td>';
@@ -205,8 +223,24 @@ function renderStoreTable() {
   table.innerHTML = html;
 }
 
+function filterStores() {
+  const filter = document.getElementById('managerFilter').value;
+  renderStoreTable(filter);
+}
+
+function initManagerFilter() {
+  const select = document.getElementById('managerFilter');
+  for (let m of MANAGERS_DATA) {
+    const option = document.createElement('option');
+    option.value = m.name;
+    option.textContent = m.name;
+    select.appendChild(option);
+  }
+}
+
 renderManagerTable();
-renderStoreTable();
+initManagerFilter();
+renderStoreTable('all');
 </script>
 </body>
 </html>
