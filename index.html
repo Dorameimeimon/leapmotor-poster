@@ -212,9 +212,9 @@ function renderStoreTable(filterManager) {
     for (let s of m.store_details) {
       html += '<tr>';
       html += '<td>' + s.name + '</td><td>' + m.name + '</td>';
-      for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
+      for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '✅' : '❌') + '</span></td>';
       html += '<td class="gap-col"></td>';
-      for (let v of s.evening) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
+      for (let v of s.evening) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '✅' : '❌') + '</span></td>';
       html += '</tr>';
     }
   }
@@ -237,11 +237,6 @@ function initManagerFilter() {
   }
 }
 
-renderManagerTable();
-initManagerFilter();
-renderStoreTable('all');
-
-// 更新标题日期为昨天
 function updateHeaderDate() {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
@@ -252,6 +247,9 @@ function updateHeaderDate() {
 }
 
 updateHeaderDate();
+renderManagerTable();
+initManagerFilter();
+renderStoreTable('all');
 </script>
 </body>
 </html>
