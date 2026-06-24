@@ -49,6 +49,12 @@ body {
   display: flex; align-items: center; gap: 10px;
   margin: 18px 0 10px;
 }
+.section-title-wrapper {
+  display: flex; justify-content: space-between; align-items: center; flex: 1;
+}
+.section-title-morning { display: flex; align-items: center; gap: 10px; }
+.section-title-evening { display: flex; align-items: center; gap: 10px; }
+.section-title-evening .bar { background: #5b8def; }
 .section-label .bar { width: 4px; height: 18px; border-radius: 2px; }
 .bar.morning { background: #f9a826; }
 .bar.evening { background: #5b8def; }
@@ -98,11 +104,29 @@ td {
 <div class="body">
 
 <!-- 经理统计表 -->
-<div class="section-label"><div class="bar morning"></div><span>各经理晨夕会开展情况</span></div>
+<div class="section-label">
+  <div class="section-title-wrapper">
+    <div class="section-title-morning">
+      <div class="bar morning"></div><span>晨会</span>
+    </div>
+    <div class="section-title-evening">
+      <div class="bar"></div><span>夕会</span>
+    </div>
+  </div>
+</div>
 <table id="managerTable"></table>
 
 <!-- 门店明细 -->
-<div class="section-label store-section"><div class="bar morning"></div><span>门店明细（共102家）</span></div>
+<div class="section-label store-section">
+  <div class="section-title-wrapper">
+    <div class="section-title-morning">
+      <div class="bar morning"></div><span>晨会</span>
+    </div>
+    <div class="section-title-evening">
+      <div class="bar"></div><span>夕会</span>
+    </div>
+  </div>
+</div>
 <div class="table-wrap"><table id="storeTable"></table></div>
 
 </div>
@@ -162,10 +186,9 @@ function renderStoreTable() {
   const table = document.getElementById('storeTable');
   let html = '<thead><tr>';
   html += '<th>门店名称</th><th>零售高级经理</th>';
-  for (let d of DATE_LABELS) html += '<th>晨' + d.slice(-2) + '</th>';
+  for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '<th class="gap-col"></th>';
-  for (let d of DATE_LABELS) html += '<th>夕' + d.slice(-2) + '</th>';
-  html += '<th>零售高级经理</th>';
+  for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '</tr></thead><tbody>';
 
   for (let m of MANAGERS_DATA) {
@@ -175,7 +198,6 @@ function renderStoreTable() {
       for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
       html += '<td class="gap-col"></td>';
       for (let v of s.evening) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
-      html += '<td class="manager-end-col">' + m.name + '</td>';
       html += '</tr>';
     }
   }
