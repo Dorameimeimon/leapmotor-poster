@@ -14,7 +14,7 @@ body {
   padding: 40px 20px;
 }
 .poster {
-  width: 1340px;
+  width: 1400px;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -58,14 +58,13 @@ body {
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th {
   background: #f5f7fa; padding: 10px 8px; text-align: center;
-  font-weight: 600; color: #666; white-space: nowrap;
-  border-bottom: 2px solid #e8ecf0;
+  font-weight: 600; color: #555; white-space: nowrap;
+  border-bottom: 2px solid #e8ecf0; font-size: 13px;
 }
 td {
   padding: 8px; text-align: center; border-bottom: 1px solid #f0f2f5;
-  white-space: nowrap;
+  white-space: nowrap; color: #333; font-size: 13px;
 }
-.label-col { text-align: left !important; font-weight: 500; color: #333; min-width: 80px; }
 .gap-col { width: 20px; background: transparent !important; border: none !important; }
 .row-total { background: #fafbfc; font-weight: 600; }
 .rate-tag {
@@ -75,13 +74,11 @@ td {
 .rate-high { background: #e8f5e9; color: #2e7d32; }
 .rate-mid { background: #fff3e0; color: #ef6c00; }
 .rate-low { background: #fce4ec; color: #c62828; }
-
+.manager-end-col {
+  text-align: center !important; font-weight: 500; color: #333;
+  border-left: 2px solid #e8ecf0;
+}
 .store-section { margin-top: 30px; }
-.store-table { font-size: 11px; }
-.store-table th { font-size: 11px; padding: 8px 6px; }
-.store-table td { padding: 6px; }
-.store-col { text-align: left !important; min-width: 220px; color: #444; }
-.manager-col { min-width: 60px; color: #888; font-size: 11px; }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
 .check-no { color: #bdbdbd; }
@@ -91,7 +88,7 @@ td {
 <div class="poster">
 <div class="header">
   <div class="header-left"><div class="header-dot"></div><h1>华南大区晨夕会开展情况</h1></div>
-  <span class="header-date">6/17-6/23</span>
+  <span class="header-date">6/23</span>
   <div class="header-stats">
     <div class="stat-item"><div class="stat-num">86%</div><div class="stat-label">昨日晨会率</div></div>
     <div class="stat-item"><div class="stat-num">85%</div><div class="stat-label">昨日夕会率</div></div>
@@ -106,7 +103,7 @@ td {
 
 <!-- 门店明细 -->
 <div class="section-label store-section"><div class="bar morning"></div><span>门店明细（共102家）</span></div>
-<div class="table-wrap"><table id="storeTable" class="store-table"></table></div>
+<div class="table-wrap"><table id="storeTable"></table></div>
 
 </div>
 </div>
@@ -126,32 +123,35 @@ function rateClass(rateStr) {
 function renderManagerTable() {
   const table = document.getElementById('managerTable');
   let html = '<thead><tr>';
+  // 表头：第一列零售高级经理，最后一列也加零售高级经理
   html += '<th>零售高级经理</th><th>门店数</th>';
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '<th>晨会率</th><th class="gap-col"></th>';
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
-  html += '<th>夕会率</th>';
+  html += '<th>夕会率</th><th>零售高级经理</th>';
   html += '</tr></thead><tbody>';
 
   let tm = [87, 87, 90, 90, 91, 83, 88];
   let te = [83, 80, 79, 87, 84, 80, 87];
   html += '<tr class="row-total">';
-  html += '<td class="label-col">华南总计</td><td>' + TOTAL_STORES + '</td>';
+  html += '<td>华南总计</td><td>' + TOTAL_STORES + '</td>';
   for (let v of tm) html += '<td>' + v + '</td>';
   html += '<td><span class="rate-tag ' + rateClass("86%") + '">86%</span></td>';
   html += '<td class="gap-col"></td>';
   for (let v of te) html += '<td>' + v + '</td>';
   html += '<td><span class="rate-tag ' + rateClass("85%") + '">85%</span></td>';
+  html += '<td>华南总计</td>';
   html += '</tr>';
 
   for (let m of MANAGERS_DATA) {
     html += '<tr>';
-    html += '<td class="label-col">' + m.name + '</td><td>' + m.total + '</td>';
+    html += '<td>' + m.name + '</td><td>' + m.total + '</td>';
     for (let v of m.morning) html += '<td>' + v + '</td>';
     html += '<td><span class="rate-tag ' + rateClass(m.morning_rate) + '">' + m.morning_rate + '</span></td>';
     html += '<td class="gap-col"></td>';
     for (let v of m.evening) html += '<td>' + v + '</td>';
     html += '<td><span class="rate-tag ' + rateClass(m.evening_rate) + '">' + m.evening_rate + '</span></td>';
+    html += '<td class="manager-end-col">' + m.name + '</td>';
     html += '</tr>';
   }
   html += '</tbody>';
@@ -161,19 +161,21 @@ function renderManagerTable() {
 function renderStoreTable() {
   const table = document.getElementById('storeTable');
   let html = '<thead><tr>';
-  html += '<th class="store-col">门店名称</th><th class="manager-col">零售高级经理</th>';
+  html += '<th>门店名称</th><th>零售高级经理</th>';
   for (let d of DATE_LABELS) html += '<th>晨' + d.slice(-2) + '</th>';
   html += '<th class="gap-col"></th>';
   for (let d of DATE_LABELS) html += '<th>夕' + d.slice(-2) + '</th>';
+  html += '<th>零售高级经理</th>';
   html += '</tr></thead><tbody>';
 
   for (let m of MANAGERS_DATA) {
     for (let s of m.store_details) {
       html += '<tr>';
-      html += '<td class="store-col">' + s.name + '</td><td class="manager-col">' + m.name + '</td>';
+      html += '<td>' + s.name + '</td><td>' + m.name + '</td>';
       for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
       html += '<td class="gap-col"></td>';
       for (let v of s.evening) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '&#9989;' : '&#10060;') + '</span></td>';
+      html += '<td class="manager-end-col">' + m.name + '</td>';
       html += '</tr>';
     }
   }
