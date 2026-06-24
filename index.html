@@ -103,7 +103,7 @@ td {
 <div class="poster">
 <div class="header">
   <div class="header-left"><div class="header-dot"></div><h1>华南大区晨夕会开展情况</h1></div>
-  <span class="header-date">6/24</span>
+  <span class="header-date" id="headerDate"></span>
   <div class="header-stats">
     <div class="stat-item"><div class="stat-num" id="morningRate">87%</div><div class="stat-label">昨日晨会率</div></div>
     <div class="stat-item"><div class="stat-num" id="eveningRate">86%</div><div class="stat-label">昨日夕会率</div></div>
@@ -240,6 +240,18 @@ function initManagerFilter() {
 renderManagerTable();
 initManagerFilter();
 renderStoreTable('all');
+
+// 更新标题日期为昨天
+function updateHeaderDate() {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const month = yesterday.getMonth() + 1;
+  const day = yesterday.getDate();
+  const dateStr = month + '/' + day;
+  document.getElementById('headerDate').textContent = dateStr;
+}
+
+updateHeaderDate();
 </script>
 </body>
 </html>
