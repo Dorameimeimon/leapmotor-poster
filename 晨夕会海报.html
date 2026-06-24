@@ -217,11 +217,11 @@ th {
       <div class="stat-label">门店总数</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">86%</div>
+      <div class="stat-num" id="morningRate">-</div>
       <div class="stat-label">昨日晨会开展率</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">85%</div>
+      <div class="stat-num" id="eveningRate">-</div>
       <div class="stat-label">昨日夕会开展率</div>
     </div>
   </div>
@@ -392,6 +392,10 @@ function filterStores() {
 
 // Initial render
 filterStores();
+
+// Update header stats dynamically
+document.getElementById('morningRate').textContent = DATA.total.morning_rate;
+document.getElementById('eveningRate').textContent = DATA.total.evening_rate;
 </script>
 </body>
 </html>
