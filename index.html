@@ -27,305 +27,98 @@ body {
   align-items: center;
   gap: 20px;
 }
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+.header-left { display: flex; align-items: center; gap: 14px; }
 .header-dot {
   width: 8px; height: 8px;
   background: #f9a826;
   border-radius: 50%;
   box-shadow: 0 0 8px #f9a82688;
 }
-.header h1 {
-  color: #fff;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
+.header h1 { color: #fff; font-size: 26px; font-weight: 700; letter-spacing: 2px; }
 .header-date {
-  color: #bfd4f0;
-  font-size: 14px;
-  margin-left: 10px;
-  padding: 4px 14px;
-  background: rgba(255,255,255,.1);
-  border-radius: 20px;
+  color: #bfd4f0; font-size: 14px; margin-left: 10px;
+  padding: 4px 14px; background: rgba(255,255,255,.1); border-radius: 20px;
 }
-.header-stats {
-  margin-left: auto;
-  display: flex;
-  gap: 24px;
-}
-.stat-item {
-  text-align: center;
-}
-.stat-num {
-  color: #f9a826;
-  font-size: 28px;
-  font-weight: 700;
-}
-.stat-label {
-  color: #bfd4f0;
-  font-size: 12px;
-  margin-top: 2px;
-}
-.body {
-  padding: 20px 40px 30px;
-}
+.header-stats { margin-left: auto; display: flex; gap: 24px; }
+.stat-item { text-align: center; }
+.stat-num { color: #f9a826; font-size: 28px; font-weight: 700; }
+.stat-label { color: #bfd4f0; font-size: 12px; margin-top: 2px; }
+.body { padding: 20px 40px 30px; }
+
+/* 经理统计表格 */
 .section-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   margin: 18px 0 10px;
 }
-.section-label:first-child {
-  margin-top: 0;
-}
-.label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.label-row .section-label {
-  margin: 0;
-}
-.section-label .bar {
-  width: 4px; height: 18px;
-  border-radius: 2px;
-}
-.section-label .bar.morning { background: #f9a826; }
-.section-label .bar.evening { background: #5b8def; }
-.section-label span {
-  font-size: 16px;
-  font-weight: 700;
-  color: #333;
-}
-.section-label .sub {
-  font-size: 12px;
-  color: #999;
-  font-weight: 400;
-  margin-left: 6px;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  font-family: inherit;
-}
-th, td {
-  padding: 10px 8px;
-  text-align: center;
-  border: 1px solid #e8ecf1;
-}
+.section-label .bar { width: 4px; height: 18px; border-radius: 2px; }
+.bar.morning { background: #f9a826; }
+.bar.evening { background: #5b8def; }
+.section-label span { font-size: 16px; font-weight: 600; color: #333; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th {
-  background: #f7f9fc;
-  color: #666;
-  font-weight: 600;
+  background: #f5f7fa; padding: 10px 8px; text-align: center;
+  font-weight: 600; color: #666; white-space: nowrap;
+  border-bottom: 2px solid #e8ecf0;
 }
-.label-col {
-  font-weight: 600;
-  min-width: 80px;
-  color: #2d5fa0;
+td {
+  padding: 8px; text-align: center; border-bottom: 1px solid #f0f2f5;
+  white-space: nowrap;
 }
-.count-col {
-  min-width: 46px;
-}
-.rate-col {
-  min-width: 56px;
-}
-.row-total {
-  background: #e8f5e9;
-}
-.row-total td {
-  font-weight: 700;
-  color: #1a3c6e;
-  border-color: #c8e6c9;
-}
-.row-total .label-col {
-  color: #1a3c6e;
-}
+.label-col { text-align: left !important; font-weight: 500; color: #333; min-width: 80px; }
+.gap-col { width: 20px; background: transparent !important; border: none !important; }
+.row-total { background: #fafbfc; font-weight: 600; }
 .rate-tag {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-weight: 600;
+  display: inline-block; padding: 2px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 600;
 }
 .rate-high { background: #e8f5e9; color: #2e7d32; }
-.rate-mid { background: #fff3e0; color: #e65100; }
+.rate-mid { background: #fff3e0; color: #ef6c00; }
 .rate-low { background: #fce4ec; color: #c62828; }
-.gap-col { width: 16px; border: none; background: none; }
-.gap-col-th { border: none; background: none; }
-.filter-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 8px 0 10px;
-}
-.filter-row label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-}
-.filter-row select {
-  padding: 6px 32px 6px 12px;
-  font-size: 14px;
-  border: 1px solid #c0c8d4;
-  border-radius: 6px;
-  background: #fff;
-  color: #333;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23666'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  outline: none;
-}
-.filter-row select:focus {
-  border-color: #2d5fa0;
-  box-shadow: 0 0 0 2px rgba(45,95,160,.12);
-}
-.store-col { min-width: 200px; text-align: left; padding-left: 10px; font-size: 13px; }
-.manager-col { min-width: 72px; color: #2d5fa0; font-weight: 600; }
-.check-col { min-width: 48px; font-size: 16px; }
+
+/* 门店明细 */
+.store-section { margin-top: 30px; }
+.store-table { font-size: 11px; }
+.store-table th { font-size: 11px; padding: 8px 6px; }
+.store-table td { padding: 6px; }
+.store-col { text-align: left !important; min-width: 220px; color: #444; }
+.manager-col { min-width: 60px; color: #888; font-size: 11px; }
+.check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
-.check-no { color: #c62828; }
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 40px;
-  background: #fafbfc;
-  border-top: 1px solid #e8ecf1;
-  font-size: 12px;
-  color: #999;
-}
+.check-no { color: #bdbdbd; }
 </style>
 </head>
 <body>
 <div class="poster">
 <div class="header">
-  <div class="header-left">
-    <div class="header-dot"></div>
-    <h1>华南大区晨夕会开展情况</h1>
-  </div>
-  <div class="header-date">6/23</div>
+  <div class="header-left"><div class="header-dot"></div><h1>华南大区晨夕会开展情况</h1></div>
+  <span class="header-date">6/17-6/23</span>
   <div class="header-stats">
-    <div class="stat-item">
-      <div class="stat-num">102</div>
-      <div class="stat-label">门店总数</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="morningRate">-</div>
-      <div class="stat-label">昨日晨会开展率</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" id="eveningRate">-</div>
-      <div class="stat-label">昨日夕会开展率</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">87%</div><div class="stat-label">昨日晨会率</div></div>
+    <div class="stat-item"><div class="stat-num">86%</div><div class="stat-label">昨日夕会率</div></div>
   </div>
 </div>
 
 <div class="body">
-  <div class="label-row">
-    <div class="section-label">
-      <div class="bar morning"></div>
-      <span>晨会</span>
-      <span class="sub">每日开展门店数</span>
-    </div>
-    <div class="section-label">
-      <span>夕会</span>
-      <span class="sub">每日开展门店数</span>
-      <div class="bar evening"></div>
-    </div>
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th class="label-col">零售经理</th>
-        <th class="count-col">6/17th>
-        <th class="count-col">6/18th>
-        <th class="count-col">6/19th>
-        <th class="count-col">6/20th>
-        <th class="count-col">6/21th>
-        <th class="count-col">6/22th>
-        <th class="count-col">6/23th>
-        <th class="count-col">6/23</th>
-        <th class="rate-col">昨日会议开展率</th>
-        <th class="gap-col-th"></th>
-        <th class="count-col">6/17</th>
-        <th class="count-col">6/18</th>
-        <th class="count-col">6/19</th>
-        <th class="count-col">6/20</th>
-        <th class="count-col">6/21</th>
-        <th class="count-col">6/22</th>
-        <th class="count-col">6/23</th>
-        <th class="rate-col">昨日会议开展率</th>
-        <th class="label-col">零售经理</th>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
 
-  <div class="label-row" style="margin-top:28px">
-    <div class="section-label">
-      <div class="bar morning"></div>
-      <span>晨会</span>
-      <span class="sub">每日门店开展明细</span>
-    </div>
-    <div class="section-label">
-      <span>夕会</span>
-      <span class="sub">每日门店开展明细</span>
-      <div class="bar evening"></div>
-    </div>
-  </div>
-  <div class="filter-row">
-    <label>筛选经理：</label>
-    <select id="managerFilter" onchange="filterStores()">
-      <option value="全部">全部（102家）</option>
-    </select>
-  </div>
-  <table id="storeTable">
-    <thead>
-      <tr>
-        <th class="store-col">门店名称</th>
-        <th class="manager-col">零售经理</th>
-        <th class="check-col">6/17th>
-        <th class="check-col">6/18th>
-        <th class="check-col">6/19th>
-        <th class="check-col">6/20th>
-        <th class="check-col">6/21th>
-        <th class="check-col">6/22th>
-        <th class="check-col">6/23th>
-        <th class="gap-col-th"></th>
-        <th class="check-col">6/17</th>
-        <th class="check-col">6/18</th>
-        <th class="check-col">6/19</th>
-        <th class="check-col">6/20</th>
-        <th class="check-col">6/21</th>
-        <th class="check-col">6/22</th>
-        <th class="check-col">6/23</th>
-      </tr>
-    </thead>
-    <tbody id="storeTableBody"></tbody>
-  </table>
-</div>
+<!-- 经理统计表 -->
+<div class="section-label"><div class="bar morning"></div><span>各经理晨夕会开展情况</span></div>
+<table id="managerTable"></table>
 
-<div class="footer">
-  <span>数据来源：晨夕会审核列表 | 统计周期：6/17-6/23</span>
-  <span>生成时间：2026年6月24日</span>
+<!-- 门店明细 -->
+<div class="section-label store-section"><div class="bar morning"></div><span>门店明细（共102家）</span></div>
+<div class="table-wrap"><table id="storeTable" class="store-table"></table></div>
+
 </div>
 </div>
 
 <script>
-const DATA = {
-  morning: [86, 86, 90, 90, 91, 82, 87],
-  evening: [82, 79, 78, 87, 83, 79, 87],
-  morning_rate: "87%",
-  evening_rate: "87%",
-  total: 103
-};
+// 数据定义
+const DATE_LABELS = ["6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23"];
+const TOTAL_STORES = 102;
+
+const MANAGERS_DATA = [{"name": "何佳欢", "total": 7, "morning": [7, 7, 6, 6, 6, 7, 6], "evening": [4, 5, 5, 6, 5, 6, 5], "morning_rate": "86%", "evening_rate": "71%", "store_details": [{"name": "广州零跑中心金马汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [false, true, true, true, true, true, false]}, {"name": "广州零跑中心亚运大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州零跑中心美轮汽车园店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, true, false, true]}, {"name": "广州零跑中心沥滘海心沙店", "morning": [true, true, false, true, false, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "广州体验中心天河汇彩路店", "morning": [true, true, true, false, true, true, true], "evening": [false, true, true, true, true, true, true]}, {"name": "广州体验中心天河广汕路店", "morning": [true, true, true, true, true, true, false], "evening": [false, false, true, false, false, true, false]}, {"name": "广州体验中心番禺大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, false, true, true]}]}, {"name": "余子恩", "total": 10, "morning": [7, 9, 7, 9, 10, 8, 9], "evening": [8, 9, 8, 8, 9, 8, 10], "morning_rate": "90%", "evening_rate": "100%", "store_details": [{"name": "佛山体验中心容桂车城店", "morning": [false, true, false, true, true, true, true], "evening": [false, true, true, true, true, true, true]}, {"name": "佛山零跑中心顺德大良车城店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山体验中心北滘车城店", "morning": [true, true, false, true, true, false, true], "evening": [true, true, true, true, true, false, true]}, {"name": "佛山体验中心高明荷香路店", "morning": [false, true, true, true, true, true, false], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山零跑中心三水友好车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山体验中心狮山汽车城店", "morning": [true, true, true, false, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "江门体验中心开平车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "江门零跑中心冈州大道店", "morning": [false, false, true, true, true, true, true], "evening": [true, true, false, false, true, true, true]}, {"name": "江门体验中心蓬江华鸿店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "江门零跑中心建设路店", "morning": [true, true, false, true, true, true, true], "evening": [false, false, false, false, false, false, true]}]}, {"name": "庄文迪", "total": 8, "morning": [8, 8, 7, 8, 7, 7, 8], "evening": [8, 5, 7, 7, 8, 8, 8], "morning_rate": "100%", "evening_rate": "100%", "store_details": [{"name": "云浮体验中心环市中路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "湛江零跑中心海田车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "湛江体验中心粤西车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "湛江体验中心瀚龙车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "肇庆零跑中心肇庆大道店", "morning": [true, true, false, true, true, false, true], "evening": [true, true, true, true, true, true, true]}, {"name": "茂名零跑中心茂名大道店", "morning": [true, true, true, true, false, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "茂名体验中心茂水路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "阳江零跑中心溢信汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, false, false, false, true, true, true]}]}, {"name": "方任昊", "total": 12, "morning": [11, 11, 12, 12, 12, 10, 11], "evening": [9, 11, 10, 11, 11, 8, 12], "morning_rate": "92%", "evening_rate": "100%", "store_details": [{"name": "东莞零跑中心塘厦车城店", "morning": [true, true, true, true, true, true, true], "evening": [false, true, true, true, true, false, true]}, {"name": "东莞体验中心东城店", "morning": [false, false, true, true, true, true, true], "evening": [false, true, false, true, true, true, true]}, {"name": "东莞体验中心松山湖店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "东莞体验中心石排大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "东莞零跑中心常朗路店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, false, true, true, false, true]}, {"name": "东莞体验中心高埗车城店", "morning": [true, true, true, true, true, true, false], "evening": [false, true, true, false, false, true, true]}, {"name": "东莞零跑中心虎门车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "东莞零跑中心寮步车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "东莞零跑中心莞太路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "东莞体验中心厚街店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, false, true]}, {"name": "东莞零跑中心长安振安东路店", "morning": [true, true, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "东莞体验中心大岭山镇店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, true, true, true, false, true]}]}, {"name": "李博恩", "total": 11, "morning": [9, 9, 9, 8, 9, 8, 10], "evening": [9, 8, 6, 10, 7, 8, 8], "morning_rate": "91%", "evening_rate": "73%", "store_details": [{"name": "三亚体验中心迎宾路汽车城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "三亚零跑中心榆亚路店", "morning": [false, true, false, false, true, true, true], "evening": [false, true, false, true, true, true, true]}, {"name": "海口零跑中心琼山大道店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, false, true, true, true, false]}, {"name": "海口体验中心江东店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "海口体验中心海口东站店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, true, true, true]}, {"name": "海口零跑中心海盛路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, true, false, true]}, {"name": "海口零跑中心南海大道店（销售）", "morning": [true, true, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "海口零跑中心南海大道东店", "morning": [true, false, true, true, true, true, true], "evening": [true, false, true, true, false, true, true]}, {"name": "海口体验中心海甸城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, false]}, {"name": "海口体验中心上邦百汇城店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, true, true, false, false, true]}, {"name": "海口零跑中心美安科技城店", "morning": [true, true, true, false, false, true, true], "evening": [true, true, true, true, false, true, true]}]}, {"name": "林伟龙", "total": 9, "morning": [8, 9, 8, 8, 7, 9, 9], "evening": [6, 9, 8, 9, 8, 9, 8], "morning_rate": "100%", "evening_rate": "89%", "store_details": [{"name": "中山零跑中心小榄菊城大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "中山零跑中心金宁汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "中山体验中心港口店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "中山零跑中心中山六路店", "morning": [true, true, true, true, false, true, true], "evening": [false, true, true, true, true, true, true]}, {"name": "中山零跑中心彩虹大道店", "morning": [false, true, false, true, true, true, true], "evening": [false, true, true, true, true, true, true]}, {"name": "珠海体验中心美满车城店", "morning": [true, true, true, false, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "珠海零跑中心南屏珠海大道店", "morning": [true, true, true, true, false, true, true], "evening": [false, true, true, true, false, true, false]}, {"name": "珠海体验中心西部车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, true, true, true]}, {"name": "珠海零跑中心上冲车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}]}, {"name": "沈祖福", "total": 6, "morning": [5, 5, 6, 5, 5, 4, 5], "evening": [6, 5, 4, 4, 5, 3, 4], "morning_rate": "83%", "evening_rate": "67%", "store_details": [{"name": "佛山体验中心海八西路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山零跑中心南庄汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, false, true, false, false]}, {"name": "佛山零跑中心禅城国际汽车城店", "morning": [true, false, true, false, false, false, true], "evening": [true, false, false, false, false, false, true]}, {"name": "佛山体验中心南海平洲店", "morning": [false, true, true, true, true, false, true], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山体验中心广佛汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "佛山零跑中心海八路汽车城店", "morning": [true, true, true, true, true, true, false], "evening": [true, true, false, true, true, false, false]}]}, {"name": "熊俊晖", "total": 9, "morning": [7, 6, 8, 7, 7, 6, 7], "evening": [6, 6, 7, 8, 6, 5, 7], "morning_rate": "78%", "evening_rate": "78%", "store_details": [{"name": "揭阳零跑中心荣通汽车城店", "morning": [true, false, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "揭阳体验中心普宁万泰新天地商场店", "morning": [true, false, true, true, true, false, true], "evening": [true, false, true, true, true, false, true]}, {"name": "梅州零跑中心剑英大道店", "morning": [true, true, true, false, true, false, true], "evening": [true, true, true, true, true, false, true]}, {"name": "汕头体验中心广汕路店", "morning": [true, true, true, true, false, true, true], "evening": [false, true, false, false, false, true, true]}, {"name": "汕头零跑中心金凤路店", "morning": [true, true, true, false, true, true, true], "evening": [false, true, true, true, true, false, true]}, {"name": "汕头零跑中心汕汾路店", "morning": [false, true, true, true, true, false, true], "evening": [true, true, true, true, true, false, true]}, {"name": "河源零跑中心河源大道店", "morning": [true, true, false, true, true, true, false], "evening": [true, false, false, true, true, true, false]}, {"name": "河源体验中心坚基购物中心店", "morning": [true, true, true, true, true, true, false], "evening": [false, true, true, true, false, true, false]}, {"name": "潮州零跑中心潮汕路店", "morning": [false, false, true, true, false, true, true], "evening": [true, false, true, true, false, true, true]}]}, {"name": "罗捷", "total": 6, "morning": [4, 4, 5, 5, 5, 5, 4], "evening": [4, 3, 3, 3, 5, 6, 4], "morning_rate": "67%", "evening_rate": "67%", "store_details": [{"name": "深圳体验中心杰鹏车城店", "morning": [true, true, true, true, true, true, false], "evening": [true, false, false, false, true, true, true]}, {"name": "深圳体验中心龙华中心店", "morning": [false, false, true, true, true, true, false], "evening": [true, false, false, true, true, true, false]}, {"name": "深圳零跑中心光明车城店", "morning": [true, true, true, true, true, true, true], "evening": [false, true, true, false, true, true, true]}, {"name": "深圳零跑中心万国城旗舰店", "morning": [false, false, false, false, false, false, true], "evening": [false, false, false, false, false, true, true]}, {"name": "深圳零跑中心远望车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, false]}, {"name": "深圳零跑中心宝运达汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}]}, {"name": "胡浩", "total": 8, "morning": [8, 8, 7, 8, 8, 6, 6], "evening": [8, 7, 8, 7, 6, 6, 7], "morning_rate": "75%", "evening_rate": "88%", "store_details": [{"name": "惠州零跑中心金山汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "惠州体验中心惠阳大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "惠州零跑中心惠南汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, false, false, false, true]}, {"name": "惠州零跑中心仲恺汽车城店", "morning": [true, true, true, true, true, false, true], "evening": [true, true, true, true, true, true, true]}, {"name": "惠州体验中心河南岸车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "汕尾体验中心汕尾大道店", "morning": [true, true, false, true, true, false, false], "evening": [true, true, true, true, false, false, false]}, {"name": "韶关体验中心浈江大道店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "韶关零跑中心沐溪大道店", "morning": [true, true, true, true, true, true, false], "evening": [true, true, true, true, true, true, true]}]}, {"name": "贾迪赫", "total": 6, "morning": [4, 4, 6, 6, 6, 4, 5], "evening": [6, 5, 5, 6, 5, 4, 5], "morning_rate": "83%", "evening_rate": "83%", "store_details": [{"name": "深圳体验中心龙岗信义店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, false, false, false]}, {"name": "深圳体验中心锦龙大道店", "morning": [true, false, true, true, true, false, false], "evening": [true, true, true, true, true, true, true]}, {"name": "深圳零跑中心百世汽车城店", "morning": [false, false, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "深圳零跑中心南山嘉进隆店", "morning": [false, true, true, true, true, false, true], "evening": [true, true, true, true, true, false, true]}, {"name": "深圳体验中心福田瑞鹏达店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "深圳零跑中心芙蓉路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}]}, {"name": "黄伟峰", "total": 10, "morning": [10, 8, 10, 9, 10, 10, 9], "evening": [10, 8, 8, 9, 10, 10, 10], "morning_rate": "90%", "evening_rate": "100%", "store_details": [{"name": "广州体验中心为正车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州零跑中心花都建设路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州零跑中心白云大道店", "morning": [true, false, true, true, true, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "广州体验中心广花路店", "morning": [true, false, true, true, true, true, true], "evening": [true, false, false, true, true, true, true]}, {"name": "广州体验中心花都北站店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州体验中心白云机场路店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州零跑中心新塘汽车城店", "morning": [true, true, true, false, true, true, true], "evening": [true, true, true, false, true, true, true]}, {"name": "广州零跑中心科学城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, false, true, true, true, true]}, {"name": "清远零跑中心港鸿汽车城店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "清远体验中心奇晟汽车城店", "morning": [true, true, true, true, true, true, false], "evening": [true, true, true, true, true, true, true]}]}];
 
 function rateClass(rateStr) {
   const v = parseInt(rateStr);
@@ -334,74 +127,70 @@ function rateClass(rateStr) {
   return 'rate-low';
 }
 
-function renderRow(name, total, morning, evening, mRate, eRate, isTotal) {
-  const cls = isTotal ? 'row-total' : '';
-  const mRow = morning.map(v => `<td>${v}</td>`).join('');
-  const eRow = evening.map(v => `<td>${v}</td>`).join('');
-  return `<tr class="${cls}">
-    <td class="label-col">${name}</td>
-    <td>${total}</td>
-    ${mRow}
-    <td><span class="rate-tag ${rateClass(mRate)}">${mRate}</span></td>
-    <td class="gap-col"></td>
-    ${eRow}
-    <td><span class="rate-tag ${rateClass(eRate)}">${eRate}</span></td>
-    <td class="label-col">${name}</td>
-  </tr>`;
+// 渲染经理统计表
+function renderManagerTable() {
+  const table = document.getElementById('managerTable');
+  let html = '<thead><tr>';
+  html += '<th>零售高级经理</th><th>门店数</th>';
+  for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
+  html += '<th>晨会率</th><th class="gap-col"></th>';
+  for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
+  html += '<th>夕会率</th>';
+  html += '</tr></thead><tbody>';
+
+  // 总计行
+  let tm = [88, 88, 91, 91, 92, 84, 89];
+  let te = [84, 81, 79, 88, 85, 81, 88];
+  html += '<tr class="row-total">';
+  html += '<td class="label-col">华南总计</td><td>' + TOTAL_STORES + '</td>';
+  for (let v of tm) html += '<td>' + v + '</td>';
+  html += '<td><span class="rate-tag ' + rateClass("87%") + '">87%</span></td>';
+  html += '<td class="gap-col"></td>';
+  for (let v of te) html += '<td>' + v + '</td>';
+  html += '<td><span class="rate-tag ' + rateClass("86%") + '">86%</span></td>';
+  html += '</tr>';
+
+  // 各经理行
+  for (let m of MANAGERS_DATA) {
+    html += '<tr>';
+    html += '<td class="label-col">' + m.name + '</td><td>' + m.total + '</td>';
+    for (let v of m.morning) html += '<td>' + v + '</td>';
+    html += '<td><span class="rate-tag ' + rateClass(m.morning_rate) + '">' + m.morning_rate + '</span></td>';
+    html += '<td class="gap-col"></td>';
+    for (let v of m.evening) html += '<td>' + v + '</td>';
+    html += '<td><span class="rate-tag ' + rateClass(m.evening_rate) + '">' + m.evening_rate + '</span></td>';
+    html += '</tr>';
+  }
+  html += '</tbody>';
+  table.innerHTML = html;
 }
 
-const tbody = document.getElementById('tableBody');
-const t = DATA.total;
-tbody.innerHTML = renderRow('华南', 102,
-  t.morning, t.evening,
-  t.morning_rate, t.evening_rate, true) +
-  DATA.managers.map(m => renderRow(m.name, m.total,
-    m.morning, m.evening,
-    m.morning_rate, m.evening_rate, false)).join('');
+// 渲染门店明细表
+function renderStoreTable() {
+  const table = document.getElementById('storeTable');
+  let html = '<thead><tr>';
+  html += '<th class="store-col">门店名称</th><th class="manager-col">零售高级经理</th>';
+  for (let d of DATE_LABELS) html += '<th>晨' + d.slice(-2) + '</th>';
+  html += '<th class="gap-col"></th>';
+  for (let d of DATE_LABELS) html += '<th>夕' + d.slice(-2) + '</th>';
+  html += '</tr></thead><tbody>';
 
-// Store detail data
-const STORE_DATA = [{"manager": "方任昊", "stores": [{"name": "惠州零跑中心惠博大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "惠州体验中心华贸店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心综上汽城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心万国城旗舰店", "morning": [false, false, false, false, false, false, true], "evening": [false, false, false, false, false, true, true]}, {"name": "深圳零跑中心宝安大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心龙岗大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心泰然店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心光明店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "深圳零跑中心坪山店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "东莞零跑中心寮步店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "东莞零跑中心厚街店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "何佳欢", "stores": [{"name": "东莞零跑中心虎门店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "东莞体验中心东城店", "morning": [false, false, true, true, true, true, true], "evening": [false, true, false, true, true, true, true]}, {"name": "东莞体验中心民盈国贸店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "东莞体验中心松山湖店", "morning": [true, true, true, true, true, true, true], "evening": [true, true, true, true, true, true, true]}, {"name": "广州零跑中心天河店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州零跑中心海珠店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州零跑中心番禺店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "胡浩", "stores": [{"name": "广州零跑中心花都店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州零跑中心南沙店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州零跑中心增城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州零跑中心从化店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "广州体验中心美林天地店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "佛山零跑中心顺德店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "佛山零跑中心南海店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "佛山零跑中心禅城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "黄伟峰", "stores": [{"name": "佛山体验中心岭南天地店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "佛山体验中心桂城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "湛江零跑中心麻章店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "湛江体验中心人民大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "茂名零跑中心茂名大道店", "morning": [true, true, true, true, false, true, true], "evening": [true, false, true, true, true, true, true]}, {"name": "肇庆零跑中心端州店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "清远零跑中心清城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "韶关零跑中心沐溪大道店", "morning": [true, true, true, true, true, true, false], "evening": [true, true, true, true, true, true, true]}]}, {"manager": "贾迪赫", "stores": [{"name": "河源零跑中心建设大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "梅州零跑中心梅县店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "梅州体验中心万象店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "汕头零跑中心泰山路店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "汕头体验中心万象城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "潮州零跑中心潮汕公路店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "李博恩", "stores": [{"name": "揭阳零跑中心榕城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "阳江零跑中心东风三路店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "阳江体验中心百利广场店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "云浮零跑中心浩林东路店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "桂林零跑中心八里街店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "桂林体验中心临桂店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "福州零跑中心自贸区店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "福州零跑中心闽侯店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "林伟龙", "stores": [{"name": "福州体验中心东二环泰禾店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "厦门零跑中心集美大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "厦门零跑中心海沧店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "厦门体验中心SM城市广场店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "泉州零跑中心晋江店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "泉州零跑中心鲤城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "泉州体验中心中骏世界城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "漳州零跑中心龙文店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "罗捷", "stores": [{"name": "漳州体验中心碧湖万达店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "莆田零跑中心荔城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "三明零跑中心三元店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "南平零跑中心建阳店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "龙岩零跑中心新罗店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "宁德零跑中心东侨店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "沈祖福", "stores": [{"name": "贵阳零跑中心花溪店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "贵阳体验中心中大国际店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "贵阳体验中心万象汇店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "遵义零跑中心汇川店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "遵义体验中心吾悦广场店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "昆明零跑中心经开区店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "熊俊晖", "stores": [{"name": "昆明零跑中心西山店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "昆明体验中心同德广场店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "昆明体验中心七彩云南第壹城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "南宁零跑中心荔滨大道店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "南宁体验中心五象航洋城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "海口零跑中心南海大道东店", "morning": [true, false, true, true, true, true, true], "evening": [true, false, true, true, false, true, true]}]}, {"manager": "余子恩", "stores": [{"name": "海口体验中心明珠广场店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "三亚零跑中心榆亚路店", "morning": [false, true, false, false, true, true, true], "evening": [false, true, false, true, true, true, true]}, {"name": "柳州零跑中心广汽路店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "柳州体验中心万象城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "南宁零跑中心武鸣店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "柳州零跑中心柳江店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}, {"manager": "庄文迪", "stores": [{"name": "玉林零跑中心玉州店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "北海零跑中心海城店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "桂林零跑中心灵川店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "梧州零跑中心长洲店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "钦州零跑中心钦南店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}, {"name": "贵港零跑中心港北店", "morning": [false, false, false, false, false, false, false], "evening": [false, false, false, false, false, false, false]}]}];
-
-function renderStoreRow(store, manager) {
-  const mChecks = store.morning.map(v => `<td class="check-col"><span class="${v ? 'check-yes' : 'check-no'}">${v ? '✅' : '❌'}</span></td>`).join('');
-  const eChecks = store.evening.map(v => `<td class="check-col"><span class="${v ? 'check-yes' : 'check-no'}">${v ? '✅' : '❌'}</span></td>`).join('');
-  return `<tr>
-    <td class="store-col">${store.name}</td>
-    <td class="manager-col">${manager}</td>
-    ${mChecks}
-    <td class="gap-col"></td>
-    ${eChecks}
-  </tr>`;
+  for (let m of MANAGERS_DATA) {
+    for (let s of m.store_details) {
+      html += '<tr>';
+      html += '<td class="store-col">' + s.name + '</td><td class="manager-col">' + m.name + '</td>';
+      for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '✅' : '❌') + '</span></td>';
+      html += '<td class="gap-col"></td>';
+      for (let v of s.evening) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '✅' : '❌') + '</span></td>';
+      html += '</tr>';
+    }
+  }
+  html += '</tbody>';
+  table.innerHTML = html;
 }
 
-// Populate dropdown
-const filterSelect = document.getElementById('managerFilter');
-DATA.managers.forEach(m => {
-  const opt = document.createElement('option');
-  opt.value = m.name;
-  opt.textContent = `${m.name}（${m.total}家）`;
-  filterSelect.appendChild(opt);
-});
-
-function filterStores() {
-  const val = document.getElementById('managerFilter').value;
-  const storeTbody = document.getElementById('storeTableBody');
-  let storeHtml = '';
-  STORE_DATA.forEach(group => {
-    if (val !== '全部' && group.manager !== val) return;
-    group.stores.forEach(s => {
-      storeHtml += renderStoreRow(s, group.manager);
-    });
-  });
-  storeTbody.innerHTML = storeHtml || '<tr><td colspan="17" style="color:#999;padding:20px">暂无数据</td></tr>';
-}
-
-// Initial render
-filterStores();
-
-// Update header stats dynamically
-document.getElementById('morningRate').textContent = DATA.total.morning_rate;
-document.getElementById('eveningRate').textContent = DATA.total.evening_rate;
+renderManagerTable();
+renderStoreTable();
 </script>
 </body>
 </html>
