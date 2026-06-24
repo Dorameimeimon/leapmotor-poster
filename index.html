@@ -72,7 +72,7 @@ td {
   white-space: nowrap; color: #333; font-size: 13px;
 }
 .gap-col { width: 20px; background: transparent !important; border: none !important; }
-.row-total { background: #fafbfc; font-weight: 600; }
+.row-total { background: #e8f5e9; font-weight: 600; }
 .rate-tag {
   display: inline-block; padding: 2px 10px; border-radius: 10px;
   font-size: 12px; font-weight: 600;
@@ -105,8 +105,8 @@ td {
   <div class="header-left"><div class="header-dot"></div><h1>华南大区晨夕会开展情况</h1></div>
   <span class="header-date">6/24</span>
   <div class="header-stats">
-    <div class="stat-item"><div class="stat-num">TM%</div><div class="stat-label">昨日晨会率</div></div>
-    <div class="stat-item"><div class="stat-num">TE%</div><div class="stat-label">昨日夕会率</div></div>
+    <div class="stat-item"><div class="stat-num" id="morningRate">87%</div><div class="stat-label">昨日晨会率</div></div>
+    <div class="stat-item"><div class="stat-num" id="eveningRate">86%</div><div class="stat-label">昨日夕会率</div></div>
   </div>
 </div>
 
@@ -174,13 +174,13 @@ function renderManagerTable() {
   let tm = [88, 88, 91, 91, 92, 84, 89];
   let te = [84, 81, 79, 88, 85, 81, 88];
   html += '<tr class="row-total">';
-  html += '<td>华南总计</td><td>' + TOTAL_STORES + '</td>';
+  html += '<td>华南</td><td>' + TOTAL_STORES + '</td>';
   for (let v of tm) html += '<td>' + v + '</td>';
   html += '<td><span class="rate-tag ' + rateClass("87%") + '">87%</span></td>';
   html += '<td class="gap-col"></td>';
   for (let v of te) html += '<td>' + v + '</td>';
   html += '<td><span class="rate-tag ' + rateClass("86%") + '">86%</span></td>';
-  html += '<td>华南总计</td>';
+  html += '<td>华南</td>';
   html += '</tr>';
 
   for (let m of MANAGERS_DATA) {
