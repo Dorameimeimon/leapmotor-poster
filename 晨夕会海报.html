@@ -80,8 +80,12 @@ td {
 .rate-high { background: #e8f5e9; color: #2e7d32; }
 .rate-mid { background: #fff3e0; color: #ef6c00; }
 .rate-low { background: #fce4ec; color: #c62828; }
+.manager-name-col {
+  font-weight: 700 !important;
+  color: #1a3c6e !important;
+}
 .manager-end-col {
-  text-align: center !important; font-weight: 500; color: #333;
+  text-align: center !important; font-weight: 700 !important; color: #1a3c6e !important;
   border-left: 2px solid #e8ecf0;
 }
 .store-section { margin-top: 30px; }
@@ -185,7 +189,7 @@ function renderManagerTable() {
 
   for (let m of MANAGERS_DATA) {
     html += '<tr>';
-    html += '<td>' + m.name + '</td><td>' + m.total + '</td>';
+    html += '<td class="manager-name-col">' + m.name + '</td><td>' + m.total + '</td>';
     for (let v of m.morning) html += '<td>' + v + '</td>';
     html += '<td><span class="rate-tag ' + rateClass(m.morning_rate) + '">' + m.morning_rate + '</span></td>';
     html += '<td class="gap-col"></td>';
