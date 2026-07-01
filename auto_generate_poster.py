@@ -234,13 +234,15 @@ def build_managers_data(store_meeting_data, date_labels, day_list):
             'store_details': store_details
         })
 
-    # 计算总计
-    total_stores = 102
+    # 计算总计 - 使用白名单中的总门店数
+    total_stores = 102  # 白名单中的总门店数
     total_morning = [sum(m['morning'][i] for m in managers_data) for i in range(len(date_labels))]
     total_evening = [sum(m['evening'][i] for m in managers_data) for i in range(len(date_labels))]
 
     tm_rate = round(total_morning[-1] / total_stores * 100) if total_stores > 0 else 0
     te_rate = round(total_evening[-1] / total_stores * 100) if total_stores > 0 else 0
+
+    print(f"总计: {total_stores}家门店, 晨会率{tm_rate}%, 夕会率{te_rate}%")
 
     return managers_data, total_stores, total_morning, total_evening, tm_rate, te_rate
 
