@@ -140,12 +140,11 @@ def process_excel(excel_path):
     wb = openpyxl.load_workbook(excel_path, data_only=True)
     ws = wb.active
 
-    # 计算日期范围：昨天往前7天
+    # 计算日期范围：今天往前7天
     today = datetime.now().date()
-    yesterday = today - timedelta(days=1)
-    start_date = yesterday - timedelta(days=6)  # 昨天往前6天 = 总共7天
+    start_date = today - timedelta(days=6)  # 今天往前6天 = 总共7天
 
-    print(f"统计周期: {start_date.strftime('%m/%d')} - {yesterday.strftime('%m/%d')} (昨天往前7天)")
+    print(f"统计周期: {start_date.strftime('%m/%d')} - {today.strftime('%m/%d')} (今天往前7天)")
 
     store_meeting_data = {}
     all_dates = set()
@@ -175,9 +174,9 @@ def process_excel(excel_path):
         if not isinstance(meeting_date, datetime):
             continue
 
-        # 只统计昨天往前7天的数据
+        # 只统计今天往前7天的数据
         meeting_date_only = meeting_date.date()
-        if meeting_date_only < start_date or meeting_date_only > yesterday:
+        if meeting_date_only < start_date or meeting_date_only > today:
             filtered_date_count += 1
             continue
 
