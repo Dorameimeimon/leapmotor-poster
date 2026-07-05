@@ -10,7 +10,7 @@
 
 import openpyxl
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import defaultdict
 import os
 
@@ -140,9 +140,17 @@ def process_excel(excel_path):
     wb = openpyxl.load_workbook(excel_path, data_only=True)
     ws = wb.active
 
+    # 计算日期范围：昨天往前7天
+    today = datetime.now().date()
+    yesterday = today - timedelta(days=1)
+    start_date = yesterday - timedelta(days=6)  # 昨天往前6天 = 总共7天
+
+    print(f"统计周期: {start_date.strftime('%m/%d')} - {yesterday.strftime('%m/%d')} (昨天往前7天)")
+
     store_meeting_data = {}
     all_dates = set()
     filtered_count = 0
+    filtered_date_count = 0
 
     for row in range(2, ws.max_row + 1):
         store_name = ws.cell(row=row, column=4).value  # 第4列是门店
@@ -165,6 +173,12 @@ def process_excel(excel_path):
                 continue
 
         if not isinstance(meeting_date, datetime):
+            continue
+
+        # 只统计昨天往前7天的数据
+        meeting_date_only = meeting_date.date()
+        if meeting_date_only < start_date or meeting_date_only > yesterday:
+            filtered_date_count += 1
             continue
 
         day = meeting_date.day
@@ -190,9 +204,11 @@ def process_excel(excel_path):
     day_list = [d[1] for d in sorted_dates]
 
     print(f"日期范围: {date_labels[0]} - {date_labels[-1]}")
-    print(f"白名单门店数: {len(store_meeting_data)} 家")
+    print(f"白名单门店数: {len(WHITELIST_MAP)} 家")
     if filtered_count > 0:
         print(f"已过滤非白名单门店: {filtered_count} 条记录")
+    if filtered_date_count > 0:
+        print(f"已过滤日期范围外记录: {filtered_date_count} 条记录")
 
     return store_meeting_data, date_labels, day_list
 
@@ -538,16 +554,25 @@ renderStoreTable('all');
     print(f"   昨日夕会率: {te_rate}%")
 
 def main():
-    # 查找Excel文件
-    excel_file = None
-    for file in os.listdir('.'):
-        if file.startswith('晨夕会审核列表') and file.endswith('.xlsx'):
-            excel_file = file
-            break
+    # 检查命令行参数
+    import sys
+    if len(sys.argv) > 1:
+        excel_file = sys.argv[1]
+        if not os.path.exists(excel_file):
+            print(f"❌ 指定的文件不存在: {excel_file}")
+            return
+        print(f"正在读取Excel文件: {os.path.basename(excel_file)}")
+    else:
+        # 查找Excel文件
+        excel_file = None
+        for file in os.listdir('.'):
+            if file.startswith('晨夕会审核列表') and file.endswith('.xlsx'):
+                excel_file = file
+                break
 
-    if not excel_file:
-        print("❌ 未找到Excel文件！请将Excel文件命名为'晨夕会审核列表.xlsx'并放在同一文件夹")
-        return
+        if not excel_file:
+            print("❌ 未找到Excel文件！请将Excel文件命名为'晨夕会审核列表.xlsx'并放在同一文件夹")
+            return
 
     # 处理Excel
     store_meeting_data, date_labels, day_list = process_excel(excel_file)
