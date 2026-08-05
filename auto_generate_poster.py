@@ -264,7 +264,7 @@ def build_managers_data(store_meeting_data, date_labels, day_list):
         })
 
     # 计算总计 - 使用白名单中的总门店数
-    total_stores = 102  # 白名单中的总门店数
+    total_stores = len(WHITELIST_MAP)  # 白名单中的总门店数
     total_morning = [sum(m['morning'][i] for m in managers_data) for i in range(len(date_labels))]
     total_evening = [sum(m['evening'][i] for m in managers_data) for i in range(len(date_labels))]
 
