@@ -1,0 +1,314 @@
+{
+  "total": {
+    "morning": [
+      13,
+      16,
+      15,
+      15,
+      17,
+      17,
+      0
+    ],
+    "evening": [
+      11,
+      13,
+      15,
+      14,
+      17,
+      16,
+      0
+    ],
+    "morning_rate": "0%",
+    "evening_rate": "0%"
+  },
+  "managers": [
+    {
+      "name": "何佳欢",
+      "total": 7,
+      "morning": [
+        7,
+        6,
+        6,
+        6,
+        7,
+        6,
+        0
+      ],
+      "evening": [
+        5,
+        5,
+        6,
+        5,
+        6,
+        5,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "黄伟峰",
+      "total": 10,
+      "morning": [
+        5,
+        7,
+        6,
+        7,
+        7,
+        7,
+        0
+      ],
+      "evening": [
+        5,
+        6,
+        6,
+        7,
+        7,
+        7,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "罗捷",
+      "total": 6,
+      "morning": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "贾迪赫",
+      "total": 6,
+      "morning": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "方任昊",
+      "total": 12,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "余子恩",
+      "total": 10,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "沈祖福",
+      "total": 6,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "林伟龙",
+      "total": 9,
+      "morning": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "胡浩",
+      "total": 8,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "熊俊晖",
+      "total": 9,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "庄文迪",
+      "total": 8,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "李博恩",
+      "total": 11,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    }
+  ]
+}

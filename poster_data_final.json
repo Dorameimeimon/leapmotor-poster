@@ -1,0 +1,544 @@
+{
+  "date_range": "6/17-6/23",
+  "date_labels": [
+    "6/17",
+    "6/18",
+    "6/19",
+    "6/20",
+    "6/21",
+    "6/22",
+    "6/23"
+  ],
+  "total_stores": 86,
+  "yesterday": "6/23",
+  "morning_rate_yesterday": 105,
+  "evening_rate_yesterday": 105,
+  "managers": [
+    {
+      "name": "方任昊",
+      "stores": 11,
+      "morning_rate": 1,
+      "evening_rate": 3,
+      "store_details": [
+        {
+          "name": "惠州零跑中心惠博大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "惠州体验中心华贸店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心综上汽城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心万国城旗舰店",
+          "morning": 1,
+          "evening": 2
+        },
+        {
+          "name": "深圳零跑中心宝安大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心龙岗大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心泰然店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心光明店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "深圳零跑中心坪山店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "东莞零跑中心寮步店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "东莞零跑中心厚街店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "何佳欢",
+      "stores": 7,
+      "morning_rate": 24,
+      "evening_rate": 24,
+      "store_details": [
+        {
+          "name": "东莞零跑中心虎门店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "东莞体验中心东城店",
+          "morning": 5,
+          "evening": 5
+        },
+        {
+          "name": "东莞体验中心民盈国贸店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "东莞体验中心松山湖店",
+          "morning": 7,
+          "evening": 7
+        },
+        {
+          "name": "广州零跑中心天河店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州零跑中心海珠店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州零跑中心番禺店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "胡浩",
+      "stores": 8,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "广州零跑中心花都店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州零跑中心南沙店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州零跑中心增城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州零跑中心从化店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "广州体验中心美林天地店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "佛山零跑中心顺德店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "佛山零跑中心南海店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "佛山零跑中心禅城店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "黄伟峰",
+      "stores": 8,
+      "morning_rate": 21,
+      "evening_rate": 23,
+      "store_details": [
+        {
+          "name": "佛山体验中心岭南天地店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "佛山体验中心桂城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "湛江零跑中心麻章店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "湛江体验中心人民大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "茂名零跑中心茂名大道店",
+          "morning": 6,
+          "evening": 6
+        },
+        {
+          "name": "肇庆零跑中心端州店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "清远零跑中心清城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "韶关零跑中心沐溪大道店",
+          "morning": 6,
+          "evening": 7
+        }
+      ]
+    },
+    {
+      "name": "贾迪赫",
+      "stores": 6,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "河源零跑中心建设大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "梅州零跑中心梅县店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "梅州体验中心万象店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "汕头零跑中心泰山路店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "汕头体验中心万象城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "潮州零跑中心潮汕公路店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "李博恩",
+      "stores": 8,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "揭阳零跑中心榕城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "阳江零跑中心东风三路店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "阳江体验中心百利广场店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "云浮零跑中心浩林东路店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "桂林零跑中心八里街店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "桂林体验中心临桂店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "福州零跑中心自贸区店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "福州零跑中心闽侯店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "林伟龙",
+      "stores": 8,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "福州体验中心东二环泰禾店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "厦门零跑中心集美大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "厦门零跑中心海沧店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "厦门体验中心SM城市广场店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "泉州零跑中心晋江店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "泉州零跑中心鲤城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "泉州体验中心中骏世界城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "漳州零跑中心龙文店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "罗捷",
+      "stores": 6,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "漳州体验中心碧湖万达店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "莆田零跑中心荔城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "三明零跑中心三元店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "南平零跑中心建阳店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "龙岩零跑中心新罗店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "宁德零跑中心东侨店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "沈祖福",
+      "stores": 6,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "贵阳零跑中心花溪店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "贵阳体验中心中大国际店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "贵阳体验中心万象汇店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "遵义零跑中心汇川店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "遵义体验中心吾悦广场店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "昆明零跑中心经开区店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "熊俊晖",
+      "stores": 6,
+      "morning_rate": 14,
+      "evening_rate": 12,
+      "store_details": [
+        {
+          "name": "昆明零跑中心西山店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "昆明体验中心同德广场店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "昆明体验中心七彩云南第壹城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "南宁零跑中心荔滨大道店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "南宁体验中心五象航洋城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "海口零跑中心南海大道东店",
+          "morning": 6,
+          "evening": 5
+        }
+      ]
+    },
+    {
+      "name": "余子恩",
+      "stores": 6,
+      "morning_rate": 10,
+      "evening_rate": 12,
+      "store_details": [
+        {
+          "name": "海口体验中心明珠广场店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "三亚零跑中心榆亚路店",
+          "morning": 4,
+          "evening": 5
+        },
+        {
+          "name": "柳州零跑中心广汽路店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "柳州体验中心万象城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "南宁零跑中心武鸣店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "柳州零跑中心柳江店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    },
+    {
+      "name": "庄文迪",
+      "stores": 6,
+      "morning_rate": 0,
+      "evening_rate": 0,
+      "store_details": [
+        {
+          "name": "玉林零跑中心玉州店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "北海零跑中心海城店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "桂林零跑中心灵川店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "梧州零跑中心长洲店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "钦州零跑中心钦南店",
+          "morning": 0,
+          "evening": 0
+        },
+        {
+          "name": "贵港零跑中心港北店",
+          "morning": 0,
+          "evening": 0
+        }
+      ]
+    }
+  ]
+}

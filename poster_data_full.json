@@ -1,0 +1,724 @@
+{
+  "total": {
+    "morning": [
+      13,
+      16,
+      15,
+      15,
+      17,
+      17,
+      0
+    ],
+    "evening": [
+      11,
+      13,
+      15,
+      14,
+      17,
+      16,
+      0
+    ],
+    "morning_rate": "0%",
+    "evening_rate": "0%"
+  },
+  "managers": [
+    {
+      "name": "何佳欢",
+      "total": 7,
+      "morning": [
+        7,
+        6,
+        6,
+        6,
+        7,
+        6,
+        0
+      ],
+      "evening": [
+        5,
+        5,
+        6,
+        5,
+        6,
+        5,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "黄伟峰",
+      "total": 10,
+      "morning": [
+        5,
+        7,
+        6,
+        7,
+        7,
+        7,
+        0
+      ],
+      "evening": [
+        5,
+        6,
+        6,
+        7,
+        7,
+        7,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "罗捷",
+      "total": 6,
+      "morning": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "贾迪赫",
+      "total": 6,
+      "morning": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "方任昊",
+      "total": 12,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "余子恩",
+      "total": 10,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "沈祖福",
+      "total": 6,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "林伟龙",
+      "total": 9,
+      "morning": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "evening": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "胡浩",
+      "total": 8,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "熊俊晖",
+      "total": 9,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "庄文迪",
+      "total": 8,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    },
+    {
+      "name": "李博恩",
+      "total": 11,
+      "morning": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evening": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "morning_rate": "0%",
+      "evening_rate": "0%"
+    }
+  ],
+  "store_data": [
+    {
+      "manager": "何佳欢",
+      "stores": [
+        {
+          "name": "广州零跑中心金马汽车城店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心亚运大道店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心美轮汽车园店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心沥滘海心沙店",
+          "morning": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心天河汇彩路店",
+          "morning": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心天河广汕路店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "evening": [
+            false,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心番禺大道店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "manager": "黄伟峰",
+      "stores": [
+        {
+          "name": "广州体验中心为正车城店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心花都建设路店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心白云大道店",
+          "morning": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心广花路店",
+          "morning": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心花都北站店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州体验中心白云机场路店",
+          "morning": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "name": "广州零跑中心新塘汽车城店",
+          "morning": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "manager": "罗捷",
+      "stores": [
+        {
+          "name": "茂名零跑中心茂名大道店",
+          "morning": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "manager": "贾迪赫",
+      "stores": [
+        {
+          "name": "东莞体验中心东城店",
+          "morning": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "manager": "方任昊",
+      "stores": [
+        {
+          "name": "深圳零跑中心万国城旗舰店",
+          "morning": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "manager": "林伟龙",
+      "stores": [
+        {
+          "name": "海口零跑中心南海大道东店",
+          "morning": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "evening": [
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    }
+  ]
+}
