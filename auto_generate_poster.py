@@ -140,6 +140,15 @@ NAME_ALIAS = {
     "揭阳体验中心普宁万泰新天地商场店": "揭阳体验中心普宁翔悦时代店",
 }
 
+# 去除不可见字符/零宽字符（Excel中偶发 \u200c \u200b \ufeff 等）及首尾空白
+_INVISIBLE_CHARS = '\u200b\u200c\u200d\ufeff\u00a0'
+def normalize_name(name):
+    if not isinstance(name, str):
+        return name
+    for ch in _INVISIBLE_CHARS:
+        name = name.replace(ch, '')
+    return name.strip()
+
 def process_excel(excel_path):
     """从Excel提取会议数据（只统计白名单中的门店）"""
     print(f"正在读取Excel文件: {excel_path}")
@@ -166,7 +175,8 @@ def process_excel(excel_path):
         if not store_name or not meeting_type or not meeting_date:
             continue
 
-        # 名称别名归一化（Excel旧名 -> 标准显示名）
+        # 名称归一化：去零宽/不可见字符，再套用别名
+        store_name = normalize_name(store_name)
         store_name = NAME_ALIAS.get(store_name, store_name)
 
         # 只统计白名单中的门店
