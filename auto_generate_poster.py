@@ -127,13 +127,18 @@ WHITELIST_MAP = {
     "海口体验中心江东店": "李博恩",
     # 熊俊晖(代) - 揭阳/梅州/潮州 (4家)
     "揭阳零跑中心荣通汽车城店": "熊俊晖(代)",
-    "揭阳体验中心普宁万泰新天地商场店": "熊俊晖(代)",
+    "揭阳体验中心普宁翔悦时代店": "熊俊晖(代)",
     "梅州零跑中心剑英大道店": "熊俊晖(代)",
     "潮州零跑中心潮汕路店": "熊俊晖(代)",
     "云浮体验中心环市中路店": "庄文迪"
 }
 
 MANAGER_ORDER = ["黄伟峰", "熊俊晖", "罗捷", "贾迪赫", "余子恩", "何佳欢", "方任昊", "秦启超", "胡浩", "熊俊晖(代)", "庄文迪", "李博恩"]
+
+# 门店名称别名（Excel中旧名 -> 标准显示名）
+NAME_ALIAS = {
+    "揭阳体验中心普宁万泰新天地商场店": "揭阳体验中心普宁翔悦时代店",
+}
 
 def process_excel(excel_path):
     """从Excel提取会议数据（只统计白名单中的门店）"""
@@ -160,6 +165,9 @@ def process_excel(excel_path):
 
         if not store_name or not meeting_type or not meeting_date:
             continue
+
+        # 名称别名归一化（Excel旧名 -> 标准显示名）
+        store_name = NAME_ALIAS.get(store_name, store_name)
 
         # 只统计白名单中的门店
         if store_name not in WHITELIST_MAP:
