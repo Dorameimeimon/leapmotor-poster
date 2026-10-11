@@ -21,6 +21,21 @@
 - 经理显示顺序（MANAGER_ORDER）: 黄伟峰, 熊俊晖, 罗捷, 贾迪赫, 余子恩, 方任昊, 秦启超, 胡浩, 陈恒惕, 李传华, 李博恩
 - 关键变化: 庄文迪→李传华；熊俊晖(代)→陈恒惕；汕尾→陈恒惕；韶关2家→余子恩；新增门店: 广州南站、观澜湖新城、陈宜禧路、梅州环市西路、阳江新达城
 
+## Web 自动下载通道（2026-10-11 建成，端到端验证通过）
+- **一键脚本**: `web_update_poster.sh`（workspace 根目录）——登录→拉数据→生成xlsx→跑海报→push，全自动
+- **系统**: 零跑partner「零小跑」 https://partner.leapmotor.com/partner/morningEveningManagement/auditList
+  - 登录页 /login，纯账号密码**无验证码**，可自动化；凭证在 `.leap_cred.json`（600权限，已gitignore，绝不进仓库）
+  - auditList 主区是 qiankun 微前端，首次渲染慢需 sleep≈14s 或重开一次
+- **数据接口**: POST `https://psg.leapmotor.com/brand/meetingList/pcPageList`
+  - body: `{page,size:300,meetingTypeList:[],meetingStatusList:[],regionCodeList:[],districtCodeList:[]}`
+  - 必带头: `Authorization: Bearer <JWT>` + `X-CROSS-NODE-ID: <同JWT>` + `Accepte: application/vnd.leapx.v2+json`
+  - JWT 有效期 7 天（iss=leapmotor_portal），token 从页面 XHR hook（setRequestHeader）捕获，不落盘
+  - 记录字段映射: meetingTypeLabel→B列, storeName→D列, uploadTime→G列(会议日期)；约150条/天
+- **配套**: `web_fetch_to_xlsx.py` 合并 /tmp/leap_p*.raw → 晨夕会审核列表<date>_web.xlsx（gitignore）
+- **验证**: 2026-10-11 web 通道与手工 Excel 结果完全一致（晨会84%/夕会79%）
+- **已知风险**: git push 凭据走 macOS 钥匙串，沙箱安全中心可能拦截（Authentication failed/failed to erase）；失败时需内嵌 token 的 remote URL 或用户授权
+- **运行环境**: 脚本须用 venv python `/Users/mei/.workbuddy/binaries/python/envs/default/bin/python`（openpyxl 所在）
+
 ## 部署信息
 - GitHub仓库: Dorameimeimon/leapmotor-poster
 - GitHub Pages链接: https://dorameimeimon.github.io/leapmotor-poster/
