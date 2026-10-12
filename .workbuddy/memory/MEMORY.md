@@ -47,6 +47,14 @@
 - 关键列: B=晨夕会类型, D=门店, G=会议日期
 - 日期格式: datetime对象或字符串
 
+## Web自动取数通道（2026-10-11 固化并验证）
+- 标准口径：会议日期 = 昨天往前7天（今天10/11 → 取10/04-10/10），与用户手工导出流程一致
+- pcPageList 日期参数：`uploadTimeStart: "<起> 00:00:00"` / `uploadTimeEnd: "<止> 23:59:59"`（页面"会议日期"列绑定 uploadTime 字段；审核日期=rectificationAuditTime*）
+- 一键脚本 `web_update_poster.sh`：登录→捕获鉴权头→分页拉取(size=300,带日期过滤,空页终止)→web_fetch_to_xlsx.py 生成xlsx→auto_generate_poster.py→push
+- 端到端验证通过：1143条(7天窗口)，84%/79% 与手工版一致；commit b230302
+- UI 日期选择器(el-date-editor)合成事件/真实键盘输入都无法更新 Vue model，必须直接传服务端参数
+- 每天"更新数据"指令 = 运行 web_update_poster.sh，无需用户上传 Excel
+
 ## 输出偏好（2026-08-07 用户明确要求）
 - 给出在线网址（GitHub Pages 链接）时，**只发链接本身，后面不要跟任何说明文字**（如"如未刷新，按…强刷"等）
 - 其他数据说明（周期、完成率、门店数等）照常放在链接之前或单独表述，但链接行保持纯净
