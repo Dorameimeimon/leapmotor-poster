@@ -14,6 +14,9 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import os
 
+# 上一版率值状态文件（本地状态，已 gitignore，不进仓库）
+LAST_RATES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'poster_last_rates.json')
+
 # 白名单和零售高级经理映射（2026-10-01 更新，11位经理 / 108家门店）
 WHITELIST_MAP = {
     # 黄伟峰 - 广州 (12家)
@@ -152,6 +155,23 @@ def normalize_name(name):
     for ch in _INVISIBLE_CHARS:
         name = name.replace(ch, '')
     return name.strip()
+
+def load_prev_rates():
+    """读取上一版（上一次生成）的晨会/夕会率值，用于对比展示。"""
+    try:
+        with open(LAST_RATES_FILE, 'r', encoding='utf-8') as f:
+            d = json.load(f)
+            return d.get('tm_rate'), d.get('te_rate')
+    except Exception:
+        return None, None
+
+def save_curr_rates(tm_rate, te_rate):
+    """保存当前版率值，作为下一版的'上一版'。"""
+    try:
+        with open(LAST_RATES_FILE, 'w', encoding='utf-8') as f:
+            json.dump({'tm_rate': int(tm_rate), 'te_rate': int(te_rate)}, f, ensure_ascii=False)
+    except Exception:
+        pass
 
 def process_excel(excel_path):
     """从Excel提取会议数据（只统计白名单中的门店）"""
@@ -605,8 +625,18 @@ def main():
         store_meeting_data, date_labels, day_list
     )
 
-    # 生成HTML
+    # 读取上一版率值（用于在回复文字中附上对比），生成后写入当前版
+    prev_tm, prev_te = load_prev_rates()
+    if prev_tm is not None:
+        print(f"上一版率值: 晨会 {prev_tm}%  夕会 {prev_te}%")
+    else:
+        print("（首次生成，无上一版对比）")
+
+    # 生成HTML（线上海报展示不变，仅本地记录上一版率值用于回复文字）
     generate_html(date_labels, managers_data, total_stores, total_morning, total_evening, tm_rate, te_rate)
+
+    save_curr_rates(tm_rate, te_rate)
+    print(f"已保存当前版率值: 晨会 {tm_rate}%  夕会 {te_rate}%")
 
 if __name__ == '__main__':
     main()
