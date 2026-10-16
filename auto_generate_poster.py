@@ -439,6 +439,15 @@ td {
   background: #fff; color: #333; cursor: pointer; min-width: 160px;
 }
 .store-filter select:focus { outline: none; border-color: #2d5fa0; box-shadow: 0 0 0 2px rgba(45,95,160,.15); }
+.filter-btn {
+  padding: 6px 14px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
+  background: #fff; color: #555; cursor: pointer; font-weight: 500;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.filter-btn:hover { border-color: #2d5fa0; color: #2d5fa0; }
+.filter-btn.active { background: #c62828; border-color: #c62828; color: #fff; }
+.filter-btn.active:hover { background: #b71c1c; border-color: #b71c1c; }
+.unexec-count { font-size: 12px; font-weight: 600; margin-left: 3px; }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
 .check-no { color: #bdbdbd; }
@@ -487,6 +496,7 @@ td {
   <select id="managerFilter" onchange="filterStores()">
     <option value="all">全部</option>
   </select>
+  <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()">昨日未执行晨/夕会门店</button>
 </div>
 <div class="table-wrap"><table id="storeTable"></table></div>
 </div>
@@ -498,6 +508,8 @@ td {
 const DATE_LABELS = __DATE_LABELS__;
 const TOTAL_STORES = __TOTAL__;
 const MANAGERS_DATA = __MANAGERS_DATA__;
+
+let showUnexecutedOnly = false;
 
 function rateClass(rateStr) {
   const v = parseInt(rateStr);
@@ -543,7 +555,9 @@ function renderManagerTable() {
   table.innerHTML = html;
 }
 
-function renderStoreTable(filterManager) {
+function renderStoreTable() {
+  const filter = document.getElementById('managerFilter').value;
+  const lastIndex = DATE_LABELS.length - 1;  // 最后一列 = 昨日
   const table = document.getElementById('storeTable');
   let html = '<thead><tr>';
   html += '<th>门店名称</th><th>零售高级经理</th>';
@@ -552,9 +566,17 @@ function renderStoreTable(filterManager) {
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '</tr></thead><tbody>';
 
+  let unexecCount = 0;
   for (let m of MANAGERS_DATA) {
-    if (filterManager && filterManager !== 'all' && m.name !== filterManager) continue;
+    if (filter && filter !== 'all' && m.name !== filter) continue;
     for (let s of m.store_details) {
+      // 未执行筛选：仅保留昨日（最后一列）晨会或夕会为 ❌ 的门店
+      if (showUnexecutedOnly) {
+        const doneMorning = s.morning[lastIndex];
+        const doneEvening = s.evening[lastIndex];
+        if (doneMorning && doneEvening) continue;  // 昨日晨夕会均已执行，跳过
+        unexecCount++;
+      }
       html += '<tr>';
       html += '<td>' + s.name + '</td><td>' + m.name + '</td>';
       for (let v of s.morning) html += '<td class="check-col"><span class="' + (v ? 'check-yes' : 'check-no') + '">' + (v ? '✅' : '❌') + '</span></td>';
@@ -563,13 +585,34 @@ function renderStoreTable(filterManager) {
       html += '</tr>';
     }
   }
+
+  // 未执行筛选激活但无命中：给出友好提示
+  if (showUnexecutedOnly && unexecCount === 0) {
+    const colspan = 3 + 2 * DATE_LABELS.length;
+    html += '<tr><td colspan="' + colspan + '" style="padding:22px;color:#2e7d32;font-weight:500;">✅ 当前筛选条件下，昨日晨夕会全部已执行，无未执行门店</td></tr>';
+  }
+
   html += '</tbody>';
   table.innerHTML = html;
+
+  // 按钮文案随命中数变化
+  const btn = document.getElementById('unexecutedBtn');
+  if (showUnexecutedOnly) {
+    btn.innerHTML = '昨日未执行晨/夕会门店<span class="unexec-count">(' + unexecCount + ')</span>';
+  } else {
+    btn.innerHTML = '昨日未执行晨/夕会门店';
+  }
 }
 
 function filterStores() {
-  const filter = document.getElementById('managerFilter').value;
-  renderStoreTable(filter);
+  renderStoreTable();
+}
+
+function toggleUnexecuted() {
+  showUnexecutedOnly = !showUnexecutedOnly;
+  const btn = document.getElementById('unexecutedBtn');
+  btn.classList.toggle('active', showUnexecutedOnly);
+  renderStoreTable();
 }
 
 function initManagerFilter() {
@@ -594,7 +637,7 @@ function updateHeaderDate() {
 updateHeaderDate();
 renderManagerTable();
 initManagerFilter();
-renderStoreTable('all');
+renderStoreTable();
 </script>
 </body>
 </html>'''
