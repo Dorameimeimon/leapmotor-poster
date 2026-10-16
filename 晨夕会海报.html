@@ -116,16 +116,28 @@ td {
 .ms-option { display: flex; align-items: center; gap: 7px; padding: 7px 8px; font-size: 13px; cursor: pointer; border-radius: 5px; color: #333; }
 .ms-option:hover { background: #f5f7fa; }
 .filter-btn {
-  padding: 9px 20px; font-size: 13px; border: none; border-radius: 6px;
-  background: #2d5fa0; color: #fff; cursor: pointer; font-weight: 600;
-  box-shadow: 0 2px 6px rgba(45,95,160,.28);
-  transition: background .15s ease, box-shadow .15s ease;
-  display: inline-flex; align-items: center;
+  -webkit-appearance: none; appearance: none;
+  padding: 11px 22px; font-size: 14px; line-height: 1; letter-spacing: .5px;
+  border: 1px solid #244e85; border-radius: 8px;
+  background: linear-gradient(180deg, #3a72bd 0%, #2d5fa0 100%);
+  color: #fff; cursor: pointer; font-weight: 600;
+  box-shadow: 0 3px 8px rgba(45,95,160,.35), inset 0 1px 0 rgba(255,255,255,.25);
+  transition: all .15s ease;
+  display: inline-flex; align-items: center; gap: 7px;
 }
-.filter-btn:hover { background: #244e85; box-shadow: 0 3px 9px rgba(45,95,160,.34); }
-.filter-btn.active { background: #c62828; box-shadow: 0 2px 6px rgba(198,40,40,.3); }
-.filter-btn.active:hover { background: #b71c1c; }
-.unexec-count { font-weight: 700; margin-left: 3px; }
+.filter-btn:hover {
+  background: linear-gradient(180deg, #2d5fa0 0%, #244e85 100%);
+  box-shadow: 0 5px 14px rgba(45,95,160,.45), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.filter-btn:active { transform: translateY(1px); box-shadow: 0 2px 5px rgba(45,95,160,.35); }
+.filter-btn.active {
+  border-color: #a01818;
+  background: linear-gradient(180deg, #d83434 0%, #c62828 100%);
+  box-shadow: 0 3px 8px rgba(198,40,40,.4), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.filter-btn.active:hover { background: linear-gradient(180deg, #c62828 0%, #b71c1c 100%); }
+.btn-ico { font-size: 15px; line-height: 1; }
+.unexec-count { font-weight: 700; margin-left: 4px; }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
 .check-no { color: #bdbdbd; }
@@ -181,7 +193,7 @@ td {
       <div class="ms-options" id="msOptions"></div>
     </div>
   </div>
-  <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()">昨日未执行晨/夕会门店</button>
+  <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()" type="button"><span class="btn-ico">⚠</span><span id="unexecBtnText">昨日未执行晨/夕会门店</span></button>
 </div>
 <div class="table-wrap"><table id="storeTable"></table></div>
 </div>
@@ -259,7 +271,7 @@ function renderStoreTable() {
     html += '<tr><td colspan="' + colspan + '" style="padding:22px;color:#999;font-weight:500;">请选择零售高级经理</td></tr>';
     html += '</tbody>';
     table.innerHTML = html;
-    document.getElementById('unexecutedBtn').innerHTML = '昨日未执行晨/夕会门店';
+    document.getElementById('unexecBtnText').textContent = '昨日未执行晨/夕会门店';
     return;
   }
 
@@ -292,11 +304,11 @@ function renderStoreTable() {
   table.innerHTML = html;
 
   // 按钮文案随命中数变化
-  const btn = document.getElementById('unexecutedBtn');
+  const btnText = document.getElementById('unexecBtnText');
   if (showUnexecutedOnly) {
-    btn.innerHTML = '昨日未执行晨/夕会门店<span class="unexec-count">(' + unexecCount + ')</span>';
+    btnText.innerHTML = '昨日未执行晨/夕会门店<span class="unexec-count">(' + unexecCount + ')</span>';
   } else {
-    btn.innerHTML = '昨日未执行晨/夕会门店';
+    btnText.textContent = '昨日未执行晨/夕会门店';
   }
 }
 
