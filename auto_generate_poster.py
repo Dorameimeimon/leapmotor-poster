@@ -156,22 +156,43 @@ def normalize_name(name):
         name = name.replace(ch, '')
     return name.strip()
 
-def load_prev_rates():
-    """读取上一版（上一次生成）的晨会/夕会率值，用于对比展示。"""
+def load_rates():
+    """读取状态文件，返回 dict。结构：end / tm / te / prev_end / prev_tm / prev_te。"""
     try:
         with open(LAST_RATES_FILE, 'r', encoding='utf-8') as f:
-            d = json.load(f)
-            return d.get('tm_rate'), d.get('te_rate')
+            return json.load(f)
     except Exception:
-        return None, None
+        return {}
 
-def save_curr_rates(tm_rate, te_rate):
-    """保存当前版率值，作为下一版的'上一版'。"""
+def get_prev_rates():
+    """返回 (prev_tm, prev_te, prev_end)，用于回复文字中的'上一版'对比。"""
+    d = load_rates()
+    return d.get('prev_tm'), d.get('prev_te'), d.get('prev_end')
+
+def update_rates(cur_end, cur_tm, cur_te):
+    """基于统计周期结束日更新状态文件。
+    - 同窗口重复触发（cur_end 与已记录的 end 相同）：保持上一版不变，仅刷新当前显示值，避免对比失效。
+    - 新的自然周期（cur_end 不同）：旧当前版滚入上一版，再写入新当前版。
+    """
+    d = load_rates()
+    last_end = d.get('end')
+    if last_end == cur_end:
+        d['tm'] = int(cur_tm)
+        d['te'] = int(cur_te)
+    else:
+        if last_end is not None:
+            d['prev_end'] = last_end
+            d['prev_tm'] = d.get('tm')
+            d['prev_te'] = d.get('te')
+        d['end'] = cur_end
+        d['tm'] = int(cur_tm)
+        d['te'] = int(cur_te)
     try:
         with open(LAST_RATES_FILE, 'w', encoding='utf-8') as f:
-            json.dump({'tm_rate': int(tm_rate), 'te_rate': int(te_rate)}, f, ensure_ascii=False)
+            json.dump(d, f, ensure_ascii=False)
     except Exception:
         pass
+    return d
 
 def process_excel(excel_path):
     """从Excel提取会议数据（只统计白名单中的门店）"""
@@ -625,18 +646,21 @@ def main():
         store_meeting_data, date_labels, day_list
     )
 
-    # 读取上一版率值（用于在回复文字中附上对比），生成后写入当前版
-    prev_tm, prev_te = load_prev_rates()
+    # 周期结束日 = 昨天（与 process_excel 的窗口逻辑保持一致）
+    cur_end = (datetime.now().date() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+    # 读取上一版率值（用于在回复文字中附上对比）
+    prev_tm, prev_te, prev_end = get_prev_rates()
     if prev_tm is not None:
-        print(f"上一版率值: 晨会 {prev_tm}%  夕会 {prev_te}%")
+        print(f"上一版率值: 晨会 {prev_tm}%  夕会 {prev_te}%  (周期结束日 {prev_end})")
     else:
         print("（首次生成，无上一版对比）")
 
     # 生成HTML（线上海报展示不变，仅本地记录上一版率值用于回复文字）
     generate_html(date_labels, managers_data, total_stores, total_morning, total_evening, tm_rate, te_rate)
 
-    save_curr_rates(tm_rate, te_rate)
-    print(f"已保存当前版率值: 晨会 {tm_rate}%  夕会 {te_rate}%")
+    update_rates(cur_end, tm_rate, te_rate)
+    print(f"已保存当前版率值: 晨会 {tm_rate}%  夕会 {te_rate}%  (周期结束日 {cur_end})")
 
 if __name__ == '__main__':
     main()
