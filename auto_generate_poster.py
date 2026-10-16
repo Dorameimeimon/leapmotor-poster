@@ -456,26 +456,35 @@ td {
 .ms-option input { accent-color: #43a047; cursor: pointer; margin: 0; }
 .filter-btn {
   -webkit-appearance: none; appearance: none;
-  padding: 11px 22px; font-size: 14px; line-height: 1; letter-spacing: .5px;
-  border: 1px solid #244e85; border-radius: 8px;
-  background: linear-gradient(180deg, #3a72bd 0%, #2d5fa0 100%);
+  font-family: inherit;
+  padding: 10px 20px; font-size: 13px; line-height: 1; letter-spacing: .3px;
+  border: 1px solid #1e4a7d; border-radius: 999px;
+  background: linear-gradient(180deg, #4a83c9 0%, #2d5fa0 55%, #29588f 100%);
   color: #fff; cursor: pointer; font-weight: 600;
-  box-shadow: 0 3px 8px rgba(45,95,160,.35), inset 0 1px 0 rgba(255,255,255,.25);
-  transition: all .15s ease;
+  box-shadow: 0 2px 0 #1e4a7d, 0 4px 10px rgba(30,74,125,.35), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
   display: inline-flex; align-items: center; gap: 7px;
 }
 .filter-btn:hover {
-  background: linear-gradient(180deg, #2d5fa0 0%, #244e85 100%);
-  box-shadow: 0 5px 14px rgba(45,95,160,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #3f76bb 0%, #29588f 55%, #234d7c 100%);
+  box-shadow: 0 3px 0 #1e4a7d, 0 6px 14px rgba(30,74,125,.42), inset 0 1px 0 rgba(255,255,255,.35);
 }
-.filter-btn:active { transform: translateY(1px); box-shadow: 0 2px 5px rgba(45,95,160,.35); }
+.filter-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 #1e4a7d, 0 1px 3px rgba(30,74,125,.4), inset 0 1px 0 rgba(255,255,255,.2);
+}
 .filter-btn.active {
-  border-color: #a01818;
-  background: linear-gradient(180deg, #d83434 0%, #c62828 100%);
-  box-shadow: 0 3px 8px rgba(198,40,40,.4), inset 0 1px 0 rgba(255,255,255,.2);
+  border-color: #8e1414;
+  background: linear-gradient(180deg, #e04a4a 0%, #c62828 55%, #a81f1f 100%);
+  box-shadow: 0 2px 0 #8e1414, 0 4px 10px rgba(142,20,20,.38), inset 0 1px 0 rgba(255,255,255,.3);
 }
-.filter-btn.active:hover { background: linear-gradient(180deg, #c62828 0%, #b71c1c 100%); }
-.btn-ico { font-size: 15px; line-height: 1; }
+.filter-btn.active:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #d43c3c 0%, #b71c1c 55%, #9c1919 100%);
+  box-shadow: 0 3px 0 #8e1414, 0 6px 14px rgba(142,20,20,.45), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-ico { font-size: 14px; line-height: 1; }
 .unexec-count { font-weight: 700; margin-left: 4px; }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
