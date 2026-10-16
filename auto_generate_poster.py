@@ -450,13 +450,6 @@ td {
   box-shadow: 0 6px 20px rgba(30,80,40,.18); padding: 6px 4px; min-width: 195px;
 }
 .ms-panel.open { display: block; }
-.ms-actions {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 2px 8px 8px; border-bottom: 1px solid #eef5e8; margin-bottom: 6px; font-size: 13px;
-}
-.ms-actions label { cursor: pointer; display: flex; align-items: center; gap: 5px; color: #333; }
-.ms-actions button { border: none; background: none; color: #43a047; cursor: pointer; font-size: 13px; padding: 2px 4px; }
-.ms-actions button:hover { text-decoration: underline; }
 .ms-options { max-height: 264px; overflow-y: auto; }
 .ms-option { display: flex; align-items: center; gap: 8px; padding: 5px 10px; font-size: 13px; cursor: pointer; border-radius: 6px; color: #333; white-space: nowrap; }
 .ms-option:hover { background: #f1f8ec; }
@@ -532,10 +525,6 @@ td {
   <div class="multi-select" id="managerMultiSelect">
     <button type="button" class="ms-btn" id="msTrigger"><span class="ms-label" id="msLabel">全部</span><span class="caret">▾</span></button>
     <div class="ms-panel" id="msPanel">
-      <div class="ms-actions">
-        <label><input type="checkbox" id="msAll" checked> 全选</label>
-        <button type="button" id="msClear">清空</button>
-      </div>
       <div class="ms-options" id="msOptions"></div>
     </div>
   </div>
@@ -601,7 +590,7 @@ function renderManagerTable() {
 function renderStoreTable() {
   const selected = getSelectedManagers();
   const total = MANAGERS_DATA.length;
-  const filterByManager = selected.length > 0 && selected.length < total;
+  const filterByManager = selected.length > 0;  // 未选(0)=显示全部；勾选则仅出所选
   const lastIndex = DATE_LABELS.length - 1;  // 最后一列 = 昨日
   const table = document.getElementById('storeTable');
   const colspan = 3 + 2 * DATE_LABELS.length;
@@ -611,15 +600,6 @@ function renderStoreTable() {
   html += '<th class="gap-col"></th>';
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '</tr></thead><tbody>';
-
-  // 未选任何经理：提示
-  if (selected.length === 0) {
-    html += '<tr><td colspan="' + colspan + '" style="padding:22px;color:#999;font-weight:500;">请选择零售高级经理</td></tr>';
-    html += '</tbody>';
-    table.innerHTML = html;
-    document.getElementById('unexecBtnText').textContent = '昨日未执行晨/夕会门店';
-    return;
-  }
 
   let unexecCount = 0;
   for (let m of MANAGERS_DATA) {
@@ -664,9 +644,6 @@ function getSelectedManagers() {
 }
 
 function onManagerChange() {
-  const all = document.querySelectorAll('#msOptions input[type=checkbox]');
-  const checked = document.querySelectorAll('#msOptions input[type=checkbox]:checked');
-  document.getElementById('msAll').checked = (all.length === checked.length);
   updateMsLabel();
   renderStoreTable();
 }
@@ -674,8 +651,7 @@ function onManagerChange() {
 function updateMsLabel() {
   const names = getSelectedManagers();
   const lbl = document.getElementById('msLabel');
-  if (names.length === 0) lbl.textContent = '未选择';
-  else if (names.length === MANAGERS_DATA.length) lbl.textContent = '全部';
+  if (names.length === 0) lbl.textContent = '全部';
   else lbl.textContent = '已选 ' + names.length + ' 位';
 }
 
@@ -703,20 +679,9 @@ function initManagerFilter() {
   for (let m of MANAGERS_DATA) {
     const lab = document.createElement('label');
     lab.className = 'ms-option';
-    lab.innerHTML = '<input type="checkbox" value="' + m.name + '" checked onchange="onManagerChange()"> ' + m.name;
+    lab.innerHTML = '<input type="checkbox" value="' + m.name + '" onchange="onManagerChange()"> ' + m.name;
     wrap.appendChild(lab);
   }
-  document.getElementById('msAll').addEventListener('change', function() {
-    const chk = this.checked;
-    document.querySelectorAll('#msOptions input[type=checkbox]').forEach(cb => cb.checked = chk);
-    onManagerChange();
-  });
-  document.getElementById('msClear').addEventListener('click', function(e) {
-    e.stopPropagation();
-    document.querySelectorAll('#msOptions input[type=checkbox]').forEach(cb => cb.checked = false);
-    document.getElementById('msAll').checked = false;
-    onManagerChange();
-  });
   document.getElementById('msTrigger').addEventListener('click', function(e) {
     e.stopPropagation();
     toggleMsPanel();
