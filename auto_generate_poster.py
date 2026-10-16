@@ -528,7 +528,7 @@ td {
       <div class="ms-options" id="msOptions"></div>
     </div>
   </div>
-  <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()" type="button"><span class="btn-ico">⚠</span><span id="unexecBtnText">昨日未执行晨/夕会门店</span></button>
+  <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()" type="button"><span class="btn-ico">⚠️</span><span id="unexecBtnText">昨日未执行晨/夕会门店</span></button>
 </div>
 <div class="table-wrap"><table id="storeTable"></table></div>
 </div>
