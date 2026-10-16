@@ -435,31 +435,32 @@ td {
 }
 .store-filter label { font-size: 14px; color: #555; font-weight: 500; }
 .multi-select { position: relative; display: inline-block; }
-.ms-trigger {
-  padding: 8px 14px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
-  background: #fff; color: #333; cursor: pointer; min-width: 175px;
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+.ms-btn {
+  font-size: 13px; padding: 7px 13px; border: 1px solid #bcd9a8; border-radius: 8px;
+  background: #fff; color: #333; cursor: pointer; min-width: 175px; text-align: left;
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
   transition: border-color .15s ease, box-shadow .15s ease;
 }
-.ms-trigger:hover, .ms-trigger.open { border-color: #2d5fa0; box-shadow: 0 0 0 2px rgba(45,95,160,.15); }
+.ms-btn:hover, .ms-btn.open { border-color: #66bb6a; box-shadow: 0 0 0 2px rgba(102,187,106,.15); }
 .ms-label { flex: 1; text-align: left; }
-.ms-arrow { color: #999; font-size: 11px; margin-left: 4px; }
+.caret { color: #8bbf6a; font-size: 10px; }
 .ms-panel {
   display: none; position: absolute; top: calc(100% + 4px); left: 0; z-index: 30;
-  background: #fff; border: 1px solid #e3e8ef; border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.12); padding: 8px; min-width: 195px;
+  background: #fff; border: 1px solid #cfe3bd; border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(30,80,40,.18); padding: 6px 4px; min-width: 195px;
 }
 .ms-panel.open { display: block; }
 .ms-actions {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 2px 6px 8px; border-bottom: 1px solid #f0f2f5; margin-bottom: 6px; font-size: 13px;
+  padding: 2px 8px 8px; border-bottom: 1px solid #eef5e8; margin-bottom: 6px; font-size: 13px;
 }
 .ms-actions label { cursor: pointer; display: flex; align-items: center; gap: 5px; color: #333; }
-.ms-actions button { border: none; background: none; color: #2d5fa0; cursor: pointer; font-size: 13px; padding: 2px 4px; }
+.ms-actions button { border: none; background: none; color: #43a047; cursor: pointer; font-size: 13px; padding: 2px 4px; }
 .ms-actions button:hover { text-decoration: underline; }
-.ms-options { max-height: 300px; overflow-y: auto; }
-.ms-option { display: flex; align-items: center; gap: 7px; padding: 7px 8px; font-size: 13px; cursor: pointer; border-radius: 5px; color: #333; }
-.ms-option:hover { background: #f5f7fa; }
+.ms-options { max-height: 264px; overflow-y: auto; }
+.ms-option { display: flex; align-items: center; gap: 8px; padding: 5px 10px; font-size: 13px; cursor: pointer; border-radius: 6px; color: #333; white-space: nowrap; }
+.ms-option:hover { background: #f1f8ec; }
+.ms-option input { accent-color: #43a047; cursor: pointer; margin: 0; }
 .filter-btn {
   -webkit-appearance: none; appearance: none;
   padding: 11px 22px; font-size: 14px; line-height: 1; letter-spacing: .5px;
@@ -529,7 +530,7 @@ td {
 <div class="store-filter">
   <label>筛选零售高级经理：</label>
   <div class="multi-select" id="managerMultiSelect">
-    <div class="ms-trigger" id="msTrigger"><span class="ms-label" id="msLabel">全部</span><span class="ms-arrow">▾</span></div>
+    <button type="button" class="ms-btn" id="msTrigger"><span class="ms-label" id="msLabel">全部</span><span class="caret">▾</span></button>
     <div class="ms-panel" id="msPanel">
       <div class="ms-actions">
         <label><input type="checkbox" id="msAll" checked> 全选</label>
