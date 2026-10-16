@@ -434,20 +434,43 @@ td {
   display: flex; align-items: center; gap: 10px; margin-bottom: 15px;
 }
 .store-filter label { font-size: 14px; color: #555; font-weight: 500; }
-.store-filter select {
-  padding: 6px 12px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
-  background: #fff; color: #333; cursor: pointer; min-width: 160px;
+.multi-select { position: relative; display: inline-block; }
+.ms-trigger {
+  padding: 8px 14px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
+  background: #fff; color: #333; cursor: pointer; min-width: 175px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  transition: border-color .15s ease, box-shadow .15s ease;
 }
-.store-filter select:focus { outline: none; border-color: #2d5fa0; box-shadow: 0 0 0 2px rgba(45,95,160,.15); }
+.ms-trigger:hover, .ms-trigger.open { border-color: #2d5fa0; box-shadow: 0 0 0 2px rgba(45,95,160,.15); }
+.ms-label { flex: 1; text-align: left; }
+.ms-arrow { color: #999; font-size: 11px; margin-left: 4px; }
+.ms-panel {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0; z-index: 30;
+  background: #fff; border: 1px solid #e3e8ef; border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12); padding: 8px; min-width: 195px;
+}
+.ms-panel.open { display: block; }
+.ms-actions {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 2px 6px 8px; border-bottom: 1px solid #f0f2f5; margin-bottom: 6px; font-size: 13px;
+}
+.ms-actions label { cursor: pointer; display: flex; align-items: center; gap: 5px; color: #333; }
+.ms-actions button { border: none; background: none; color: #2d5fa0; cursor: pointer; font-size: 13px; padding: 2px 4px; }
+.ms-actions button:hover { text-decoration: underline; }
+.ms-options { max-height: 300px; overflow-y: auto; }
+.ms-option { display: flex; align-items: center; gap: 7px; padding: 7px 8px; font-size: 13px; cursor: pointer; border-radius: 5px; color: #333; }
+.ms-option:hover { background: #f5f7fa; }
 .filter-btn {
-  padding: 6px 14px; font-size: 13px; border: 1px solid #d0d5dd; border-radius: 6px;
-  background: #fff; color: #555; cursor: pointer; font-weight: 500;
-  transition: background .15s ease, color .15s ease, border-color .15s ease;
+  padding: 9px 20px; font-size: 13px; border: none; border-radius: 6px;
+  background: #2d5fa0; color: #fff; cursor: pointer; font-weight: 600;
+  box-shadow: 0 2px 6px rgba(45,95,160,.28);
+  transition: background .15s ease, box-shadow .15s ease;
+  display: inline-flex; align-items: center;
 }
-.filter-btn:hover { border-color: #2d5fa0; color: #2d5fa0; }
-.filter-btn.active { background: #c62828; border-color: #c62828; color: #fff; }
-.filter-btn.active:hover { background: #b71c1c; border-color: #b71c1c; }
-.unexec-count { font-size: 12px; font-weight: 600; margin-left: 3px; }
+.filter-btn:hover { background: #244e85; box-shadow: 0 3px 9px rgba(45,95,160,.34); }
+.filter-btn.active { background: #c62828; box-shadow: 0 2px 6px rgba(198,40,40,.3); }
+.filter-btn.active:hover { background: #b71c1c; }
+.unexec-count { font-weight: 700; margin-left: 3px; }
 .check-col { padding: 4px 2px !important; }
 .check-yes { color: #2e7d32; }
 .check-no { color: #bdbdbd; }
@@ -493,9 +516,16 @@ td {
 </div>
 <div class="store-filter">
   <label>筛选零售高级经理：</label>
-  <select id="managerFilter" onchange="filterStores()">
-    <option value="all">全部</option>
-  </select>
+  <div class="multi-select" id="managerMultiSelect">
+    <div class="ms-trigger" id="msTrigger"><span class="ms-label" id="msLabel">全部</span><span class="ms-arrow">▾</span></div>
+    <div class="ms-panel" id="msPanel">
+      <div class="ms-actions">
+        <label><input type="checkbox" id="msAll" checked> 全选</label>
+        <button type="button" id="msClear">清空</button>
+      </div>
+      <div class="ms-options" id="msOptions"></div>
+    </div>
+  </div>
   <button id="unexecutedBtn" class="filter-btn" onclick="toggleUnexecuted()">昨日未执行晨/夕会门店</button>
 </div>
 <div class="table-wrap"><table id="storeTable"></table></div>
@@ -556,9 +586,12 @@ function renderManagerTable() {
 }
 
 function renderStoreTable() {
-  const filter = document.getElementById('managerFilter').value;
+  const selected = getSelectedManagers();
+  const total = MANAGERS_DATA.length;
+  const filterByManager = selected.length > 0 && selected.length < total;
   const lastIndex = DATE_LABELS.length - 1;  // 最后一列 = 昨日
   const table = document.getElementById('storeTable');
+  const colspan = 3 + 2 * DATE_LABELS.length;
   let html = '<thead><tr>';
   html += '<th>门店名称</th><th>零售高级经理</th>';
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
@@ -566,9 +599,18 @@ function renderStoreTable() {
   for (let d of DATE_LABELS) html += '<th>' + d + '</th>';
   html += '</tr></thead><tbody>';
 
+  // 未选任何经理：提示
+  if (selected.length === 0) {
+    html += '<tr><td colspan="' + colspan + '" style="padding:22px;color:#999;font-weight:500;">请选择零售高级经理</td></tr>';
+    html += '</tbody>';
+    table.innerHTML = html;
+    document.getElementById('unexecutedBtn').innerHTML = '昨日未执行晨/夕会门店';
+    return;
+  }
+
   let unexecCount = 0;
   for (let m of MANAGERS_DATA) {
-    if (filter && filter !== 'all' && m.name !== filter) continue;
+    if (filterByManager && !selected.includes(m.name)) continue;
     for (let s of m.store_details) {
       // 未执行筛选：仅保留昨日（最后一列）晨会或夕会为 ❌ 的门店
       if (showUnexecutedOnly) {
@@ -588,7 +630,6 @@ function renderStoreTable() {
 
   // 未执行筛选激活但无命中：给出友好提示
   if (showUnexecutedOnly && unexecCount === 0) {
-    const colspan = 3 + 2 * DATE_LABELS.length;
     html += '<tr><td colspan="' + colspan + '" style="padding:22px;color:#2e7d32;font-weight:500;">✅ 当前筛选条件下，昨日晨夕会全部已执行，无未执行门店</td></tr>';
   }
 
@@ -604,8 +645,37 @@ function renderStoreTable() {
   }
 }
 
-function filterStores() {
+function getSelectedManagers() {
+  const cbs = document.querySelectorAll('#msOptions input[type=checkbox]:checked');
+  return Array.from(cbs).map(cb => cb.value);
+}
+
+function onManagerChange() {
+  const all = document.querySelectorAll('#msOptions input[type=checkbox]');
+  const checked = document.querySelectorAll('#msOptions input[type=checkbox]:checked');
+  document.getElementById('msAll').checked = (all.length === checked.length);
+  updateMsLabel();
   renderStoreTable();
+}
+
+function updateMsLabel() {
+  const names = getSelectedManagers();
+  const lbl = document.getElementById('msLabel');
+  if (names.length === 0) lbl.textContent = '未选择';
+  else if (names.length === MANAGERS_DATA.length) lbl.textContent = '全部';
+  else lbl.textContent = '已选 ' + names.length + ' 位';
+}
+
+function toggleMsPanel() {
+  const panel = document.getElementById('msPanel');
+  const trigger = document.getElementById('msTrigger');
+  const open = panel.classList.toggle('open');
+  trigger.classList.toggle('open', open);
+}
+
+function closeMsPanel() {
+  document.getElementById('msPanel').classList.remove('open');
+  document.getElementById('msTrigger').classList.remove('open');
 }
 
 function toggleUnexecuted() {
@@ -616,13 +686,33 @@ function toggleUnexecuted() {
 }
 
 function initManagerFilter() {
-  const select = document.getElementById('managerFilter');
+  const wrap = document.getElementById('msOptions');
   for (let m of MANAGERS_DATA) {
-    const option = document.createElement('option');
-    option.value = m.name;
-    option.textContent = m.name;
-    select.appendChild(option);
+    const lab = document.createElement('label');
+    lab.className = 'ms-option';
+    lab.innerHTML = '<input type="checkbox" value="' + m.name + '" checked onchange="onManagerChange()"> ' + m.name;
+    wrap.appendChild(lab);
   }
+  document.getElementById('msAll').addEventListener('change', function() {
+    const chk = this.checked;
+    document.querySelectorAll('#msOptions input[type=checkbox]').forEach(cb => cb.checked = chk);
+    onManagerChange();
+  });
+  document.getElementById('msClear').addEventListener('click', function(e) {
+    e.stopPropagation();
+    document.querySelectorAll('#msOptions input[type=checkbox]').forEach(cb => cb.checked = false);
+    document.getElementById('msAll').checked = false;
+    onManagerChange();
+  });
+  document.getElementById('msTrigger').addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleMsPanel();
+  });
+  document.addEventListener('click', function(e) {
+    const ms = document.getElementById('managerMultiSelect');
+    if (!ms.contains(e.target)) closeMsPanel();
+  });
+  updateMsLabel();
 }
 
 function updateHeaderDate() {
