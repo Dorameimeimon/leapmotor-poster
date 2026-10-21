@@ -101,7 +101,11 @@ cp "$WS/晨夕会海报.html" "$WS/index.html"
 cp "$WS/晨夕会海报.html" "$WS/deploy/index.html"
 git add -A
 git commit -m "自动更新晨夕会海报 ${TODAY} (周期 ${DSTA}-${DEND}, web通道)" > /dev/null 2>&1 || echo ">>> 无变更"
-git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main 2>&1 | tail -2 || echo ">>> PUSH_FAILED(凭据)"
+if git -c http.proxy= -c https.proxy= -c http.version=HTTP/1.1 push origin main > /tmp/push_log.txt 2>&1; then
+  echo ">>> PUSH_OK"
+else
+  echo ">>> PUSH_FAILED:"; tail -3 /tmp/push_log.txt
+fi
 
 # --- 7. 关浏览器释放资源 ---
 $AG close > /dev/null 2>&1 || true
